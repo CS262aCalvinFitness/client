@@ -9,4 +9,46 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.calvin.calvinfitness.MainActivity">
+
+    <TextView
+        android:text="Welcome to Calvin Fitness, an application which makes tracking workouts an ease! Select one of three buttons below to get started!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Start Workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:id="@+id/start_workout_button"
+        android:minWidth="200dp"
+        android:maxWidth="200dp"
+        android:layout_below="@+id/welcome_label"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Create New Workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_workout_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:id="@+id/create_workout_button"
+        android:minWidth="200dp" />
+
+    <Button
+        android:text="View Previous Workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/past_workout_button"
+        android:minWidth="200dp" />
 </RelativeLayout>
