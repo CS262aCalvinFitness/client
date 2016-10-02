@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Calvin Fitness</string>
+    <string name="select_workout_text">Select a workout from either of the two dropdown menus below:
+    Select Previously Saved Workout for a list of saved favorite for a list of saved favorite workouts
+    Select Quick Workout for a list of premade workouts</string>
+    <string name="previous_workout_text">Select a previously completed workout from the dropdown
+        menu below to view the results.</string>
 </resources>

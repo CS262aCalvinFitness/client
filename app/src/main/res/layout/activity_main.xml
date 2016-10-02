@@ -30,7 +30,8 @@
         android:minWidth="200dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/create_workout_button"
-        android:layout_alignStart="@+id/create_workout_button" />
+        android:layout_alignStart="@+id/create_workout_button"
+        android:onClick="PastWorkout" />
 
     <Button
         android:text="Start Workout"
@@ -41,7 +42,8 @@
         android:maxWidth="200dp"
         android:layout_above="@+id/create_workout_button"
         android:layout_alignLeft="@+id/create_workout_button"
-        android:layout_alignStart="@+id/create_workout_button" />
+        android:layout_alignStart="@+id/create_workout_button"
+        android:onClick="StartWorkout" />
 
     <Button
         android:text="Create New Workout"
@@ -50,7 +52,8 @@
         android:id="@+id/create_workout_button"
         android:minWidth="200dp"
         android:layout_above="@+id/past_workout_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="CreateNewWorkout" />
 
     <ImageView
         android:layout_width="wrap_content"
