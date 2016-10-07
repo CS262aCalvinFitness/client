@@ -1,5 +1,4 @@
 # CalvinFitness
-CS 262 Android Application
   Our goal is to create an Android application that simplifies the process of planning and executing a workout. 
 The target customers are students who workout, no matter the experience level. The application, at its most basic function,
 allows the user to create workouts and input the weights used. There will be default, basic exercises to choose from, or the
