@@ -11,17 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.calvin.calvinfitness.MainActivity">
 
-    <TextView
-        android:text="Welcome to Calvin Fitness, an application which makes tracking workouts an ease! Select one of three buttons below to get started!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/welcome_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:text="View Previous Workout"
         android:layout_width="wrap_content"
