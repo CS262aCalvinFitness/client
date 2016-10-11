@@ -12,7 +12,7 @@
     tools:context="edu.calvin.calvinfitness.MainActivity">
 
     <Button
-        android:text="View Previous Workout"
+        android:text="@string/view_previous_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/past_workout_button"
@@ -23,7 +23,7 @@
         android:onClick="PastWorkout" />
 
     <Button
-        android:text="Start Workout"
+        android:text="@string/start_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start_workout_button"
@@ -35,7 +35,7 @@
         android:onClick="StartWorkout" />
 
     <Button
-        android:text="Create New Workout"
+        android:text="@string/create_new_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/create_workout_button"
