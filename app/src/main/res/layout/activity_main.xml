@@ -48,7 +48,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/weights"
-        android:layout_below="@+id/welcome_label"
         android:layout_alignLeft="@+id/start_workout_button"
         android:layout_alignStart="@+id/start_workout_button"
         android:id="@+id/imageView"
