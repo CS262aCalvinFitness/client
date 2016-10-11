@@ -11,4 +11,18 @@
     <string name="create_new_workout">Create New Workout</string>
     <string name="start_workout">Start Workout</string>
     <string name="view_previous_workout">View Previous Workout</string>
+    <string name="about_create_workout1">1. Enter Workout Name</string>
+    <string name="about_create_workout2">2. Enter Date</string>
+    <string name="about_create_workout3">3. Choose Exercises</string>
+    <string name="about_create_workout4">a. Select Exercise from dropdown menu</string>
+    <string name="about_create_workout5">b. Enter new exercise</string>
+    <string name="about_create_workout6">c. Import workout from button at bottom</string>
+    <string name="about_create_workout7">4. Once complete</string>
+    <string name="about_create_workout8">a. Save workout to view results later</string>
+    <string name="about_create_workout9">b. Export workout with button at bottom</string>
+    <string name="Workout_Name_TextView">Workout Name:</string>
+    <string name="Date_TextView">Date:</string>
+    <string name="WorkoutName_EditText" />
+    <string name="WorkoutDate_EditText" />
+    <string name="EnterNewExercise_Button">Enter New Exercise</string>
 </resources>
