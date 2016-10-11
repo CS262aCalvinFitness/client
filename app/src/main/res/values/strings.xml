@@ -8,4 +8,7 @@
     <string name="Calvin_Fitness_About">Welcome to Calvin Fitness, an application which makes tracking
         workouts an ease! Select one of three buttons on the home page to get started!</string>
     <string name="home_page_about_title">About</string>
+    <string name="create_new_workout">Create New Workout</string>
+    <string name="start_workout">Start Workout</string>
+    <string name="view_previous_workout">View Previous Workout</string>
 </resources>

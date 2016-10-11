@@ -1,0 +1,5 @@
+- The app must be for Android.
+- We will use the GSON library to store workout.
+- Users will send workouts via e-mail (send the JSON file).
+- We will use JDK 1.8.
+- The app should be self explanatory in how to use it, with about pages for each activity.
