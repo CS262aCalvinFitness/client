@@ -21,6 +21,7 @@
         <activity android:name=".HomePageAboutActivity"></activity>
         <activity android:name=".StartWorkoutAboutActivity"></activity>
         <activity android:name=".ViewPastWorkoutAboutActivity"></activity>
+        <activity android:name=".CreateWorkoutAboutActivity"></activity>
     </application>
 
 </manifest>
