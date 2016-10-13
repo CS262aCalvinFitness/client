@@ -36,5 +36,15 @@
         <item> My Saved workout 2 </item>
         <item> My Saved workout 3 </item>
     </string-array>
+    <string-array name="quick_exercise_array">
+        <item> Exercise 1</item>
+        <item> Exercise 2</item>
+        <item> Exericse 3</item>
+    </string-array>
+    <string-array name="past_workouts_array">
+        <item> Past Workout 1</item>
+        <item> Past Workout 2</item>
+        <item> Past Workout 3</item>
+    </string-array>
 
 </resources>
