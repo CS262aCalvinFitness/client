@@ -11,47 +11,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.calvin.calvinfitness.MainActivity">
 
-    <Button
-        android:text="@string/view_previous_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/past_workout_button"
-        android:minWidth="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/create_workout_button"
-        android:layout_alignStart="@+id/create_workout_button"
-        android:onClick="PastWorkout" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
-    <Button
-        android:text="@string/start_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/start_workout_button"
-        android:minWidth="200dp"
-        android:maxWidth="200dp"
-        android:layout_above="@+id/create_workout_button"
-        android:layout_alignLeft="@+id/create_workout_button"
-        android:layout_alignStart="@+id/create_workout_button"
-        android:onClick="StartWorkout" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="268dp"
+            app:srcCompat="@drawable/weights"
+            android:layout_alignLeft="@+id/start_workout_button"
+            android:layout_alignStart="@+id/start_workout_button"
+            android:id="@+id/imageView"
+            android:layout_alignRight="@+id/start_workout_button"
+            android:layout_alignEnd="@+id/start_workout_button"
+            android:layout_weight="0.20" />
 
-    <Button
-        android:text="@string/create_new_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_workout_button"
-        android:minWidth="200dp"
-        android:layout_above="@+id/past_workout_button"
-        android:layout_centerHorizontal="true"
-        android:onClick="CreateNewWorkout" />
+        <Button
+            android:text="@string/start_workout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/start_workout_button"
+            android:minWidth="200dp"
+            android:maxWidth="200dp"
+            android:layout_above="@+id/create_workout_button"
+            android:layout_alignLeft="@+id/create_workout_button"
+            android:layout_alignStart="@+id/create_workout_button"
+            android:onClick="StartWorkout"
+            android:layout_weight="0.26" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/weights"
-        android:layout_alignLeft="@+id/start_workout_button"
-        android:layout_alignStart="@+id/start_workout_button"
-        android:id="@+id/imageView"
-        android:layout_alignRight="@+id/start_workout_button"
-        android:layout_alignEnd="@+id/start_workout_button"
-        android:layout_above="@+id/start_workout_button" />
+        <Button
+            android:text="@string/create_new_workout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_workout_button"
+            android:minWidth="200dp"
+            android:layout_above="@+id/past_workout_button"
+            android:layout_centerHorizontal="true"
+            android:onClick="CreateNewWorkout"
+            android:layout_weight="0.24" />
+
+        <Button
+            android:text="@string/view_previous_workout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/past_workout_button"
+            android:minWidth="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/create_workout_button"
+            android:layout_alignStart="@+id/create_workout_button"
+            android:onClick="PastWorkout"
+            android:layout_weight="0.31" />
+
+    </LinearLayout>
+
 </RelativeLayout>

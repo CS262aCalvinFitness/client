@@ -33,6 +33,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
                 this,R.array.quick_workout_array, android.R.layout.simple_spinner_item
         );
 
+        // Assign the dropdown items in the quick workout spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quick_workout_spinner.setAdapter(adapter);
         quick_workout_spinner.setSelection(0);
@@ -42,6 +43,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
                 this,R.array.saved_workout_array, android.R.layout.simple_spinner_item
         );
 
+        // Assign the dropdown items in the saved workouts spinner
         saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         saved_workout_spinner.setAdapter(saved_adapter);
         saved_workout_spinner.setSelection(0);

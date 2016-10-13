@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /*
 This activity gives the user the option to create a new workout. This activity shows up when the
@@ -12,12 +14,27 @@ This activity gives the user the option to create a new workout. This activity s
  */
 public class Create_New_Workout_Activity extends AppCompatActivity {
 
+    // Declare variables
+    private Spinner default_exercises_spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__new__workout_);
         Intent intent = getIntent();
         setTitle("Create New Workout");
+
+        default_exercises_spinner = (Spinner) findViewById(R.id.SelectExercise_Spinner);
+
+        //Adapter for new exercise spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,R.array.quick_exercise_array, android.R.layout.simple_spinner_item
+        );
+
+        // Assign the dropdown items in the default exercise spinner
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        default_exercises_spinner.setAdapter(adapter);
+        default_exercises_spinner.setSelection(0);
     }
 
     /**
