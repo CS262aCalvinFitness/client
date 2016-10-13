@@ -13,18 +13,19 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/quick_workout_spinner"
-        android:layout_below="@+id/saved_workout_spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="92dp" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/saved_workout_spinner"
         android:layout_marginTop="49dp"
         android:layout_below="@+id/select_workout_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/quick_workout_spinner"
+        android:layout_marginTop="93dp"
+        android:layout_below="@+id/saved_workout_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

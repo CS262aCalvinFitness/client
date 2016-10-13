@@ -25,4 +25,16 @@
     <string name="WorkoutName_EditText" />
     <string name="WorkoutDate_EditText" />
     <string name="EnterNewExercise_Button">Enter New Exercise</string>
+    <string-array name="quick_workout_array" >
+        <item> Quick Legs </item>
+        <item> Quick Chest </item>
+        <item> Quick Back </item>
+        <item> Quick Shoulders </item>
+    </string-array>
+    <string-array name="saved_workout_array">
+        <item> My Saved workout 1</item>
+        <item> My Saved workout 2 </item>
+        <item> My Saved workout 3 </item>
+    </string-array>
+
 </resources>
