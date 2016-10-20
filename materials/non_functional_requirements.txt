@@ -1,5 +1,6 @@
+This is a list containing the non-functional requirements for the Calvin Fitness application.
 - The app must be for Android.
-- We will use the GSON library to store workout.
 - Users will send workouts via e-mail (send the JSON file).
-- We will use JDK 1.8.
-- The app should be self explanatory in how to use it, with about pages for each activity.
+- The user should be able to figure out the basic functionality of the app in 5 minutes or less.
+- Automatically update the date of a workout to be the current date, when started by a user.
+- App should be usable from inside of any gym, regardless of cell service.
