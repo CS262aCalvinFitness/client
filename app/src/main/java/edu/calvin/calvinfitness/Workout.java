@@ -1,8 +1,19 @@
 package edu.calvin.calvinfitness;
 
+import android.content.Context;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.io.File;
 
 /**
  * Created by mitchstark on 10/16/16.
@@ -26,6 +37,13 @@ public class Workout {
         exercise_list = exercises;
         workout_name = name;
         workout_date = Calendar.getInstance().getTime(); //sets the workout date as the current date
+    }
+
+    //constructor with only the name
+    public Workout(String name) {
+        exercise_list = new ArrayList<>();
+        workout_name = name;
+        workout_date = Calendar.getInstance().getTime();
     }
 
     /**
@@ -52,4 +70,17 @@ public class Workout {
     }
 
     //save, import, and export methods to be implemented here
+
+    public void saveWorkout(Context context) {
+        //create check for the exact same workout
+        try {
+            FileOutputStream writer = context.openFileOutput("workouts.json", Context.MODE_APPEND);
+            Gson gson = new GsonBuilder().create();
+            String obj = gson.toJson(this);
+            writer.write(obj.getBytes());
+
+        } catch (IOException e) {
+            System.out.println("***ERROR*** could not print workout. " + e.toString());
+        }
+    }
 }
