@@ -3,6 +3,7 @@ package edu.calvin.calvinfitness;
 import android.os.Bundle;
 import android.view.Menu;
 
+
 /*
  * Activity that displays the About information for the Create Workout Activity
  * @date: 10/11/2016

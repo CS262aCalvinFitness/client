@@ -25,6 +25,13 @@
     <string name="WorkoutName_EditText" />
     <string name="WorkoutDate_EditText" />
     <string name="EnterNewExercise_Button">Enter New Exercise</string>
+    <string name="Workout_Name_text">Workout Name:</string>
+    <string name="Exercise_Name_text">Exercise Name:</string>
+    <string name="Set_Count_text">Number of sets</string>
+    <string name="Rep_Count_text">Number of reps</string>
+    <string name="Weight_text">Weight</string>
+    <string name="Add_exercise_button">ADD TO WORKOUT</string>
+    <string name="Error_text_msg">Please fill in all Fields</string>
     <string-array name="quick_workout_array" >
         <item> Quick Legs </item>
         <item> Quick Chest </item>
