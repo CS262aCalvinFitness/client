@@ -8,12 +8,16 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Exchanger;
 
@@ -27,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        Workout test = new Workout("Test Workout");
-//        test.saveWorkout(this);
-        readSavedWorkouts();
     }
 
     /*called when user clicks on start_workout_button
@@ -87,26 +87,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void readSavedWorkouts() {
-        try {
-            FileInputStream reader = openFileInput("workouts.json");
-            int content;
-            String data = "";
-            while ((content = reader.read()) != -1) {
-                // convert to char and display it
-                data += ((char) content);
-            }
-            System.out.println("Read file data: " + data);
-            JSONArray list = new JSONArray(data);
-            for(int i = 0; i < list.length(); i++) {
-                JSONObject j = list.getJSONObject(i);
-                //create workout here with json object toString
-            }
-        } catch (Exception e) {
-            System.out.println("Unsuccessful reading of [workouts.json]: " + e.toString());
-        }
-
     }
 }

@@ -73,11 +73,16 @@ public class Workout {
 
     public void saveWorkout(Context context) {
         //create check for the exact same workout
+        List<Workout> prevWorkouts = new Workout_Reader().read(context);
+        String dataString = "[";
         try {
-            FileOutputStream writer = context.openFileOutput("workouts.json", Context.MODE_APPEND);
+            FileOutputStream writer = context.openFileOutput("workouts.json", Context.MODE_PRIVATE);
             Gson gson = new GsonBuilder().create();
-            String obj = gson.toJson(this);
-            writer.write(obj.getBytes());
+            for(Workout w : prevWorkouts) {
+                dataString += gson.toJson(w) + ", ";
+            }
+            dataString += gson.toJson(this) + "]";
+            writer.write(dataString.getBytes());
 
         } catch (IOException e) {
             System.out.println("***ERROR*** could not print workout. " + e.toString());
