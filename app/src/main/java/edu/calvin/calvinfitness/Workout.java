@@ -62,6 +62,10 @@ public class Workout {
         }
     }
 
+    public List<Exercise> getExercise_list() {
+        return exercise_list;
+    }
+
     /**
      * @param newName - set the name of the workout
      */
