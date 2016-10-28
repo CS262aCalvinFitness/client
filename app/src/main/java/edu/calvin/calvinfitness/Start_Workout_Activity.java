@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 /*
@@ -15,8 +16,9 @@ activity is shown when the "Start Workout" button is clicked from MainActivity.
 public class Start_Workout_Activity extends AppCompatActivity {
 
     //Define Variables
-    private Spinner quick_workout_spinner;
-    private Spinner saved_workout_spinner;
+    //private Spinner quick_workout_spinner;
+    private Spinner select_workout_spinner;
+    private Button start_workout_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,9 @@ public class Start_Workout_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         setTitle("Select Workout");
 
-        quick_workout_spinner = (Spinner) findViewById(R.id.quick_workout_spinner);
-        saved_workout_spinner = (Spinner) findViewById(R.id.saved_workout_spinner);
+        //quick_workout_spinner = (Spinner) findViewById(R.id.quick_workout_spinner);
+        select_workout_spinner = (Spinner) findViewById(R.id.select_workout_spinner);
+        start_workout_button = (Button) findViewById(R.id.start_workout_button);
 
         //Adapter for quick spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -35,8 +38,8 @@ public class Start_Workout_Activity extends AppCompatActivity {
 
         // Assign the dropdown items in the quick workout spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quick_workout_spinner.setAdapter(adapter);
-        quick_workout_spinner.setSelection(0);
+        select_workout_spinner.setAdapter(adapter);
+        select_workout_spinner.setSelection(0);
 
         //Adapter for saved spinner
         ArrayAdapter<CharSequence> saved_adapter = ArrayAdapter.createFromResource(
@@ -44,10 +47,17 @@ public class Start_Workout_Activity extends AppCompatActivity {
         );
 
         // Assign the dropdown items in the saved workouts spinner
-        saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        saved_workout_spinner.setAdapter(saved_adapter);
-        saved_workout_spinner.setSelection(0);
+        //saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //saved_workout_spinner.setAdapter(saved_adapter);
+        //saved_workout_spinner.setSelection(0);
+        //wont' need this? ^^
 
+
+        /*
+        read in JSON file to break down exercise name, weight, set rep
+        text box that loads up reps, weight and sets
+        start workout button with selected workout from spinner
+         */
     }
 
     /**

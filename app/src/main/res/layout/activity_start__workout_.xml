@@ -13,19 +13,63 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/saved_workout_spinner"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/select_workout_text"
+        android:id="@+id/select_workout_spinner"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
+    <TextView
+        android:text="Sets"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/quick_workout_spinner"
-        android:layout_marginTop="93dp"
-        android:layout_below="@+id/saved_workout_spinner"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:id="@+id/view_exercise_set"
+        android:layout_alignBaseline="@+id/view_exercise_name"
+        android:layout_alignBottom="@+id/view_exercise_name"
+        android:layout_toRightOf="@+id/view_exercise_name"
+        android:layout_toEndOf="@+id/view_exercise_name" />
+
+    <TextView
+        android:text="Reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/view_exercise_reps"
+        android:layout_alignBaseline="@+id/view_exercise_set"
+        android:layout_alignBottom="@+id/view_exercise_set"
+        android:layout_toRightOf="@+id/view_exercise_set"
+        android:layout_toEndOf="@+id/view_exercise_set" />
+
+    <TextView
+        android:text="Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:id="@+id/view_exercise_weight"
+        android:layout_alignBaseline="@+id/view_exercise_reps"
+        android:layout_alignBottom="@+id/view_exercise_reps"
+        android:layout_toRightOf="@+id/view_exercise_reps"
+        android:layout_toEndOf="@+id/view_exercise_reps" />
+
+    <TextView
+        android:text="Exercise Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:id="@+id/view_exercise_name"
+        android:layout_below="@+id/select_workout_spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Start Workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_workout_button"
+        android:layout_below="@+id/select_workout_spinner"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
