@@ -157,4 +157,14 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /*
+    Create a new workout, save it to file (it's up to the main activity to "update" its list)
+    After successful save, display toast with success message
+     */
+    public void saveWorkout() {
+        EditText editText = (EditText)findViewById(R.id.Exercise_name_edit);
+        Workout w = new Workout(listOfExc, editText.getText().toString());
+        w.
+    }
 }

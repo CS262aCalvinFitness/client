@@ -13,6 +13,7 @@ public class Workout {
     private List<Exercise> exercise_list;
     private String workout_name;
     private Date workout_date;
+    //todo : add completed boolean
 
     //constructor that includes a specified date
     public Workout(List<Exercise> exercises, String name, Date date) {
