@@ -32,6 +32,7 @@
     <string name="Weight_text">Weight</string>
     <string name="Add_exercise_button">ADD TO WORKOUT</string>
     <string name="Error_text_msg">Please fill in all Fields</string>
+    <string name="save_workout">Save Workout</string>
     <string-array name="quick_workout_array" >
         <item> Quick Legs </item>
         <item> Quick Chest </item>
