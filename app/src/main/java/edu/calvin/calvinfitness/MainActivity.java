@@ -1,11 +1,25 @@
 package edu.calvin.calvinfitness;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Exchanger;
 
 /*
 This is the entry point of the app. It enters into the Main Activity, giving three options for
@@ -17,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        List<Workout> workoutList = new Workout_Reader().read(this);
+        for(Workout w : workoutList) {
+            System.out.println(w.getWorkout_name());
+        }
+
     }
 
     /*called when user clicks on start_workout_button

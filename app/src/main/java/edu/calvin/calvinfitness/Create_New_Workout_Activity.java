@@ -1,5 +1,6 @@
 package edu.calvin.calvinfitness;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +129,26 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
             }
         });
 
+        final Context context = this;
+        Button button = (Button) findViewById(R.id.save_new_workout);
+        button.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                EditText editText = (EditText)findViewById(R.id.Exercise_name_edit);
+                Workout w = new Workout(listOfExc, editText.getText().toString());
+                w.saveWorkout(context);
+
+                Context context = getApplicationContext();
+                CharSequence text = "Workout Saved";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        });
+
     }
 
     /**
@@ -163,8 +185,6 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     After successful save, display toast with success message
      */
     public void saveWorkout() {
-        EditText editText = (EditText)findViewById(R.id.Exercise_name_edit);
-        Workout w = new Workout(listOfExc, editText.getText().toString());
-        w.
+
     }
 }
