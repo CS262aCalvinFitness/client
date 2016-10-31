@@ -24,13 +24,14 @@ public class Workout {
     private List<Exercise> exercise_list;
     private String workout_name;
     private Date workout_date;
-    //todo : add completed boolean
+    private Boolean completed;
 
     //constructor that includes a specified date
     public Workout(List<Exercise> exercises, String name, Date date) {
         exercise_list = exercises;
         workout_name = name;
         workout_date = date;
+        completed = false;
     }
 
     //constructor that uses the current date
@@ -46,6 +47,11 @@ public class Workout {
         workout_name = name;
         workout_date = Calendar.getInstance().getTime();
     }
+
+    public Boolean getCompleted() {return completed;}
+
+    public void toggleCompleted() {completed = !completed;}
+
 
     /**
      * @param e - Excercise to be added to the list
@@ -97,4 +103,10 @@ public class Workout {
             System.out.println("***ERROR*** could not print workout. " + e.toString());
         }
     }
+
+    public void setDate() {
+        workout_date = Calendar.getInstance().getTime();
+    }
+
+    public Date getDate() {return workout_date;}
 }
