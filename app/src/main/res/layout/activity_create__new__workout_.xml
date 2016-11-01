@@ -142,4 +142,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:text="@string/save_workout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_new_workout"
+        android:layout_alignParentBottom="true"
+        android:onClick=""/>
+
 </RelativeLayout>
