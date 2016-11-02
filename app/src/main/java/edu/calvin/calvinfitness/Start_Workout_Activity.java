@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -19,6 +20,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
     //private Spinner quick_workout_spinner;
     private Spinner select_workout_spinner;
     private Button start_workout_button;
+    private String workoutName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,12 @@ public class Start_Workout_Activity extends AppCompatActivity {
         select_workout_spinner = (Spinner) findViewById(R.id.select_workout_spinner);
         start_workout_button = (Button) findViewById(R.id.start_workout_button);
 
-        //Adapter for quick spinner
+        //Adapter for spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,R.array.quick_workout_array, android.R.layout.simple_spinner_item
         );
 
-        // Assign the dropdown items in the quick workout spinner
+        // Assign the dropdown items in the workout spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         select_workout_spinner.setAdapter(adapter);
         select_workout_spinner.setSelection(0);
@@ -47,15 +49,28 @@ public class Start_Workout_Activity extends AppCompatActivity {
         );
 
         // Assign the dropdown items in the saved workouts spinner
-        //saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //saved_workout_spinner.setAdapter(saved_adapter);
-        //saved_workout_spinner.setSelection(0);
+        saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        select_workout_spinner.setAdapter(saved_adapter);
+        select_workout_spinner.setSelection(0);
         //wont' need this? ^^
+
+
+        //when start workout button is clicked.
+        start_workout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workoutName = select_workout_spinner.getSelectedItem().toString();
+            }
+            //read json files here ####################
+        });
+
+
+
 
 
         /*
         read in JSON file to break down exercise name, weight, set rep
-        text box that loads up reps, weight and sets
+        list view that loads up reps, weight and sets
         start workout button with selected workout from spinner
          */
     }
