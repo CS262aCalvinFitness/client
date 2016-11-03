@@ -3,12 +3,11 @@ package edu.calvin.calvinfitness;
 import android.os.Bundle;
 import android.view.Menu;
 
-/*
- * Activity that displays the About Start Workout information to the user
- * @date: 10/10/2016
+/**
+ * Created by ethanclark on 11/1/16.
  */
 
-public class StartWorkoutAboutActivity extends MainActivity {
+public class HomePageHelpActivity extends MainActivity {
 
     /*
      * Called when this activity is called
@@ -21,8 +20,8 @@ public class StartWorkoutAboutActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_start_workout);
-        setTitle("Start Workout: Help");
+        setContentView(R.layout.activity_home_page_help);
+        setTitle("CalvinFitness Help");
     }
 
     /* Remove the triple-dot icon from the top of the application */

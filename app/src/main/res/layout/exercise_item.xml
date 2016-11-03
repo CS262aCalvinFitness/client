@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/Exercise_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Exercise_Name"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="@string/Separator_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Separator_TextView"
+            android:textSize="18sp"
+            android:paddingRight="3dp" />
+
+        <TextView
+            android:text="@string/Number_Sets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Number_Sets"
+            android:layout_weight="1"
+            android:paddingRight="3dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="@string/Sets_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Sets_TextView"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:paddingRight="3dp" />
+
+        <TextView
+            android:text="@string/Cross_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Cross_TextView"
+            android:layout_weight="0.77"
+            android:textSize="18sp"
+            android:paddingRight="3dp" />
+
+        <TextView
+            android:text="@string/Number_Reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Number_Reps"
+            android:layout_weight="1"
+            android:paddingRight="3dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="@string/Reps_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Reps_TextView"
+            android:layout_weight="0.76"
+            android:textSize="18sp"
+            android:paddingRight="3dp" />
+
+        <TextView
+            android:text="@string/Cross_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Cross_TextView2"
+            android:layout_weight="0.57"
+            android:textSize="18sp"
+            android:paddingRight="3dp" />
+
+        <TextView
+            android:text="@string/Number_Weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Number_Weight"
+            android:layout_weight="1"
+            android:paddingRight="3dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="@string/lbs_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbs_TextView"
+            android:layout_weight="0.54"
+            android:textSize="18sp"
+            android:paddingRight="5dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox"
+            android:checked="true" />
+    </LinearLayout>
+</LinearLayout>

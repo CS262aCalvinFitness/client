@@ -23,7 +23,7 @@ public class CreateWorkoutAboutActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_create_workout);
-        setTitle("About Create Workout");
+        setTitle("Create Workout: Help");
     }
 
     /* Remove the triple-dot icon from the top of the application */

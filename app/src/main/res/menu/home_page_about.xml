@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home_page_about"
-        android:title="@string/home_page_about_title" />
+        android:title="@string/about_title" />
+    <item android:id="@+id/help_page_about"
+        android:title="@string/help_title" />
 </menu>

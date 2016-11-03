@@ -5,9 +5,12 @@
     Select Quick Workout for a list of premade workouts.</string>
     <string name="previous_workout_text">Select a previously completed workout from the dropdown
         menu to view the results.</string>
-    <string name="Calvin_Fitness_About">Welcome to Calvin Fitness, an application which makes tracking
+    <string name="Calvin_Fitness_About">CalvinFitness was created by Ethan Clark, Russell Clousing, Mark Davis, Matt Kotva,
+        and Mitch Stark for their CS262 Project at Calvin College, fall of 2016.</string>
+    <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
         workouts an ease! Select one of three buttons on the home page to get started!</string>
-    <string name="home_page_about_title">About</string>
+    <string name="about_title">About</string>
+    <string name="help_title">Help</string>
     <string name="create_new_workout">Create New Workout</string>
     <string name="start_workout">Start Workout</string>
     <string name="view_previous_workout">View Previous Workout</string>
@@ -32,6 +35,17 @@
     <string name="Weight_text">Weight</string>
     <string name="Add_exercise_button">ADD TO WORKOUT</string>
     <string name="Error_text_msg">Please fill in all Fields</string>
+    <string name="view_workout_button_text">View Past Workout</string>
+    <string name="filled_in_workout_name" />
+    <string name="Sets_TextView">Sets</string>
+    <string name="Cross_TextView">\@</string>
+    <string name="Reps_TextView">Reps</string>
+    <string name="lbs_TextView">lbs</string>
+    <string name="Exercise_Name" />
+    <string name="Number_Sets" />
+    <string name="Number_Reps" />
+    <string name="Number_Weight" />
+    <string name="Separator_TextView">:</string>
     <string-array name="quick_workout_array" >
         <item> Quick Legs </item>
         <item> Quick Chest </item>
@@ -47,11 +61,6 @@
         <item> Exercise 1</item>
         <item> Exercise 2</item>
         <item> Exericse 3</item>
-    </string-array>
-    <string-array name="past_workouts_array">
-        <item> Past Workout 1</item>
-        <item> Past Workout 2</item>
-        <item> Past Workout 3</item>
     </string-array>
 
 </resources>
