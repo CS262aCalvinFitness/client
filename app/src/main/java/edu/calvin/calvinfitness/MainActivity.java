@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //exercise_list.add(new Exercise("Squat", 12, 3, 100));
+      //  exercise_list.add(new Exercise("Squat", 12, 3, 100));
         //Workout workout_example = new Workout(exercise_list, "Example Workout");
 
     }

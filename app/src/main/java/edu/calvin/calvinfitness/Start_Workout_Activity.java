@@ -25,11 +25,11 @@ activity is shown when the "Start Workout" button is clicked from MainActivity.
 public class Start_Workout_Activity extends AppCompatActivity {
 
     //Define Variables
-    //private Spinner quick_workout_spinner;
     private Spinner select_workout_spinner;
     private Button start_workout_button;
     private List<String> workout_names;
     private List<Exercise> exerciseList;
+    private ListView itemListView;
     private TextView exercise_name_TextView;
     private ListView viewWorkout;
 
@@ -40,30 +40,10 @@ public class Start_Workout_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         setTitle("Select Workout");
 
-        //quick_workout_spinner = (Spinner) findViewById(R.id.quick_workout_spinner);
         select_workout_spinner = (Spinner) findViewById(R.id.select_workout_spinner);
         start_workout_button = (Button) findViewById(R.id.start_workout_button);
-
-        //Adapter for spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,R.array.quick_workout_array, android.R.layout.simple_spinner_item
-        );
-
-        // Assign the dropdown items in the workout spinner
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        select_workout_spinner.setAdapter(adapter);
-        select_workout_spinner.setSelection(0);
-
-        //Adapter for saved spinner
-        ArrayAdapter<CharSequence> saved_adapter = ArrayAdapter.createFromResource(
-                this,R.array.saved_workout_array, android.R.layout.simple_spinner_item
-        );
-
-        // Assign the dropdown items in the saved workouts spinner
-        saved_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        select_workout_spinner.setAdapter(saved_adapter);
-        select_workout_spinner.setSelection(0);
-        //wont' need this? ^^
+        exercise_name_TextView = (TextView) findViewById(R.id.exercise_name_TextView);
+        itemListView = (ListView) findViewById(R.id.Exercise_List_View);
 
         // Read in the list of workouts currently stored for the user
         final List<Workout> prevWorkouts = new Workout_Reader().read(this);
@@ -73,6 +53,17 @@ public class Start_Workout_Activity extends AppCompatActivity {
             String name = prevWorkouts.get(i).getWorkout_name();
             workout_names.add(name);
         }
+
+        //Adapter for saved spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, workout_names
+        );
+
+        // Assign the dropdown items in the workout spinner
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        select_workout_spinner.setAdapter(adapter);
+        select_workout_spinner.setSelection(0);
+
 
         //when start workout button is clicked.
         start_workout_button.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +115,8 @@ public class Start_Workout_Activity extends AppCompatActivity {
             case R.id.home_page_about:
                 startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
-            case R.id.help_page_about:
-                startActivity(new Intent(getApplicationContext(), StartWorkoutAboutActivity.class));
+            //case R.id.help_page_about:
+            //    startActivity(new Intent(getApplicationContext(), StartWorkoutAboutActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -148,9 +139,9 @@ public class Start_Workout_Activity extends AppCompatActivity {
 
         int resource = R.layout.exercise_item;
         String[] from = {"name", "sets", "reps", "weight"};
-        int[] to = {R.id.exercise_name, R.id.exercise_sets, R.id.exercise_reps, R.id.exercise_weight;
+        int[] to = {R.id.Exercise_Name, R.id.Number_Sets, R.id.Number_Reps, R.id.Number_Weight};
 
         SimpleAdapter adapter = new SimpleAdapter(this, data, resource, from, to);
-        viewWorkout.setAdapter(adapter);
+        itemListView.setAdapter(adapter);
     }
 }
