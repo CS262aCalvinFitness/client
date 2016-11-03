@@ -46,6 +46,7 @@
     <string name="Number_Reps" />
     <string name="Number_Weight" />
     <string name="Separator_TextView">:</string>
+    <string name="save_workout">Save Workout</string>
     <string-array name="quick_workout_array" >
         <item> Quick Legs </item>
         <item> Quick Chest </item>
