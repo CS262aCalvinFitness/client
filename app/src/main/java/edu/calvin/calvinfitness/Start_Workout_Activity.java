@@ -66,7 +66,11 @@ public class Start_Workout_Activity extends AppCompatActivity {
 
 
 
+        //create workout in ActivityMain only once
 
+        //user Workout_Reader.java
+
+        
 
         /*
         read in JSON file to break down exercise name, weight, set rep

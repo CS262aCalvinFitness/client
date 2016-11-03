@@ -32,11 +32,6 @@
         android:orientation="horizontal"
         android:layout_below="@+id/start_workout_button"
         android:id="@+id/viewWorkout">
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
         <TextView
             android:id="@+id/exercise_name"
             android:layout_width="wrap_content"
@@ -57,5 +52,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" weight " />
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
     </LinearLayout>
 </RelativeLayout>
