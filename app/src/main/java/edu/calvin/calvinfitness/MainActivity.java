@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.home_page_about:
                 startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), HomePageHelpActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

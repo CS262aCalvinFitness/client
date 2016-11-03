@@ -136,7 +136,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                EditText editText = (EditText)findViewById(R.id.Exercise_name_edit);
+                EditText editText = (EditText)findViewById(R.id.WorkoutName_Edit);
                 Workout w = new Workout(listOfExc, editText.getText().toString());
                 w.saveWorkout(context);
 
@@ -173,8 +173,10 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home_page_about:
-                startActivity(new Intent(getApplicationContext(), CreateWorkoutAboutActivity.class));
+                startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), CreateWorkoutAboutActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

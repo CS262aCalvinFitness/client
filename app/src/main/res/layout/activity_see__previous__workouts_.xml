@@ -10,12 +10,63 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.calvin.calvinfitness.See_Previous_Workouts_Activity">
 
-    <Spinner
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/previous_result_spinner"
-        android:layout_below="@+id/previous_workout_text"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/previous_result_spinner"
+            android:layout_below="@+id/previous_workout_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="@string/view_workout_button_text"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:id="@+id/view_workout_button"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="43dp">
+
+            <TextView
+                android:text="@string/Workout_Name_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/Workout_Name_TextView"
+                android:textSize="24sp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:layout_weight="0.10" />
+
+            <TextView
+                android:text="@string/filled_in_workout_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/Workout_Name_Text"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:paddingTop="10dp" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/Exercise_List_View"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:scrollIndicators="right"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true" />
+
+    </LinearLayout>
+
 </RelativeLayout>

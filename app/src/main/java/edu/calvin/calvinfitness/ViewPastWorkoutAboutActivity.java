@@ -22,7 +22,7 @@ public class ViewPastWorkoutAboutActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_view_past_workout);
-        setTitle("About View Past Workout");
+        setTitle("View Past Workout: Help");
     }
 
     /* Remove the triple-dot icon from the top of the application */

@@ -122,8 +122,10 @@ public class Start_Workout_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home_page_about:
-                startActivity(new Intent(getApplicationContext(), StartWorkoutAboutActivity.class));
+                startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), StartWorkoutAboutActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
