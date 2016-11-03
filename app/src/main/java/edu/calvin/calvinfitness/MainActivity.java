@@ -27,10 +27,16 @@ where to go, as well as a welcome label.
  */
 public class MainActivity extends AppCompatActivity {
 
+    //private List<Exercise> exercise_list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //exercise_list.add(new Exercise("Squat", 12, 3, 100));
+        //Workout workout_example = new Workout(exercise_list, "Example Workout");
+
     }
 
     /*called when user clicks on start_workout_button

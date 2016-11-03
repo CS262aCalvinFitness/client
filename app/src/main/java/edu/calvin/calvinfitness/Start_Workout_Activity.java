@@ -8,7 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Arrays;
 
 /*
 The Start Workout activity gives users the ability to start and fill in data for a workout. This
@@ -20,7 +28,10 @@ public class Start_Workout_Activity extends AppCompatActivity {
     //private Spinner quick_workout_spinner;
     private Spinner select_workout_spinner;
     private Button start_workout_button;
-    private String workoutName;
+    private List<String> workout_names;
+    private List<Exercise> exerciseList;
+    private TextView exercise_name_TextView;
+    private ListView viewWorkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,23 +65,33 @@ public class Start_Workout_Activity extends AppCompatActivity {
         select_workout_spinner.setSelection(0);
         //wont' need this? ^^
 
+        // Read in the list of workouts currently stored for the user
+        final List<Workout> prevWorkouts = new Workout_Reader().read(this);
+        System.out.println(prevWorkouts);
+        workout_names = new ArrayList<String>();
+        for(int i = 0; i < prevWorkouts.size(); i++) {
+            String name = prevWorkouts.get(i).getWorkout_name();
+            workout_names.add(name);
+        }
 
         //when start workout button is clicked.
         start_workout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workoutName = select_workout_spinner.getSelectedItem().toString();
+                String name = select_workout_spinner.getSelectedItem().toString();
+                for(Workout temp: prevWorkouts) {
+                    if (temp.getWorkout_name() == name) {
+                        Start_Workout_Activity.this.updateDisplay(temp);
+                    }
+                }
             }
-            //read json files here ####################
         });
 
 
 
         //create workout in ActivityMain only once
 
-        //user Workout_Reader.java
 
-        
 
         /*
         read in JSON file to break down exercise name, weight, set rep
@@ -106,5 +127,28 @@ public class Start_Workout_Activity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void updateDisplay(Workout temp) {
+        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
+
+        exercise_name_TextView.setText(temp.getWorkout_name());
+
+        exerciseList = temp.getExercise_list();
+        for (Exercise item : exerciseList) {
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("name", item.getName());
+            map.put("sets", Integer.toString(item.getSets()));
+            map.put("reps", Integer.toString(item.getReps()));
+            map.put("weight", Integer.toString(item.getWeights()));
+            data.add(map);
+        }
+
+        int resource = R.layout.exercise_item;
+        String[] from = {"name", "sets", "reps", "weight"};
+        int[] to = {R.id.exercise_name, R.id.exercise_sets, R.id.exercise_reps, R.id.exercise_weight;
+
+        SimpleAdapter adapter = new SimpleAdapter(this, data, resource, from, to);
+        viewWorkout.setAdapter(adapter);
     }
 }
