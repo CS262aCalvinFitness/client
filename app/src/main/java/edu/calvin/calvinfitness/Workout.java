@@ -86,12 +86,12 @@ public class Workout {
 
     //save, import, and export methods to be implemented here
 
-    public void saveWorkout(Context context) {
+    public void saveWorkout(Context context, String file_name) {
         //create check for the exact same workout
-        List<Workout> prevWorkouts = new Workout_Reader().read(context);
+        List<Workout> prevWorkouts = new Workout_Reader().read(context, Constants.STANDARD_FILE);
         String dataString = "[";
         try {
-            FileOutputStream writer = context.openFileOutput("workouts.json", Context.MODE_PRIVATE);
+            FileOutputStream writer = context.openFileOutput(file_name, Context.MODE_PRIVATE);
             Gson gson = new GsonBuilder().create();
             for(Workout w : prevWorkouts) {
                 dataString += gson.toJson(w) + ", ";

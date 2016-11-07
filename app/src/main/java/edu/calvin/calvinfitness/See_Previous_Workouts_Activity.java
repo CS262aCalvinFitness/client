@@ -40,7 +40,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
         setTitle("View Past Workout Results");
 
         // Read in the list of workouts currently stored for the user
-        final List<Workout> prevWorkouts = new Workout_Reader().read(this);
+        final List<Workout> prevWorkouts = new Workout_Reader().read(this, Constants.COMPLETED_FILE);
         System.out.println(prevWorkouts);
         workout_names = new ArrayList<String>();
         for(int i = 0; i < prevWorkouts.size(); i++) {

@@ -46,7 +46,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
         itemListView = (ListView) findViewById(R.id.Exercise_List_View);
 
         // Read in the list of workouts currently stored for the user
-        final List<Workout> prevWorkouts = new Workout_Reader().read(this);
+        final List<Workout> prevWorkouts = new Workout_Reader().read(this, Constants.STANDARD_FILE);
         System.out.println(prevWorkouts);
         workout_names = new ArrayList<String>();
         for(int i = 0; i < prevWorkouts.size(); i++) {
