@@ -39,6 +39,7 @@ public class Workout {
         exercise_list = exercises;
         workout_name = name;
         workout_date = Calendar.getInstance().getTime(); //sets the workout date as the current date
+        completed = false;
     }
 
     //constructor with only the name
@@ -46,6 +47,7 @@ public class Workout {
         exercise_list = new ArrayList<>();
         workout_name = name;
         workout_date = Calendar.getInstance().getTime();
+        completed = false;
     }
 
     public Boolean getCompleted() {return completed;}
@@ -86,12 +88,14 @@ public class Workout {
 
     //save, import, and export methods to be implemented here
 
-    public void saveWorkout(Context context) {
+    public void saveWorkout(Context context, String file_name) {
         //create check for the exact same workout
-        List<Workout> prevWorkouts = new Workout_Reader().read(context);
+        System.out.println("Made it here");
+        List<Workout> prevWorkouts = new Workout_Reader().read(context, file_name);
+        System.out.println("Passed the test");
         String dataString = "[";
         try {
-            FileOutputStream writer = context.openFileOutput("workouts.json", Context.MODE_PRIVATE);
+            FileOutputStream writer = context.openFileOutput(file_name, Context.MODE_PRIVATE);
             Gson gson = new GsonBuilder().create();
             for(Workout w : prevWorkouts) {
                 dataString += gson.toJson(w) + ", ";

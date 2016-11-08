@@ -17,11 +17,11 @@ import java.util.List;
  */
 
 public class Workout_Reader {
-    public List<Workout> read(Context context) {
+    public List<Workout> read(Context context, String file_name) {
         Gson gson = new GsonBuilder().create();
         List<Workout> workouts = new ArrayList<>();
         try {
-            FileInputStream reader = context.openFileInput("workouts.json");
+            FileInputStream reader = context.openFileInput(file_name);
             int content;
             String data = "";
             while ((content = reader.read()) != -1) {
@@ -36,9 +36,11 @@ public class Workout_Reader {
                 workouts.add(temp);
             }
         } catch (Exception e) {
-            System.out.println("Unsuccessful reading of [workouts.json]: " + e.toString());
+            System.out.println("Unsuccessful reading of [" + file_name + "]: " + e.toString());
         }
         return workouts;
 
     }
+
+    //change up to read from completed file
 }
