@@ -158,7 +158,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
             data.add(map);
         }
 
-        int resource = R.layout.exercise_item;
+        int resource = R.layout.start_exercise_item;
         String[] from = {"name", "sets", "reps", "weight"};
         int[] to = {R.id.Exercise_Name, R.id.Number_Sets, R.id.Number_Reps, R.id.Number_Weight};
 

@@ -34,8 +34,8 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     private List <String> set_list = new ArrayList<String>();
     private Spinner Rep_spinner;
     private List <String> rep_list = new ArrayList<String>();
-    private Spinner Weight_spinner;
-    private List <String> weight_list = new ArrayList<String>();
+    private EditText Weight_edit;
+
     private String nameOfExercise;
     private int weightOfExercise;
     private String weightText;
@@ -52,20 +52,17 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         //set spinner to spinner widgets
         Rep_spinner = (Spinner) findViewById(R.id.Number_of_reps_spinner);
         Set_spinner = (Spinner) findViewById(R.id.num_of_sets_spinner);
-        Weight_spinner = (Spinner) findViewById(R.id.weight_spinner);
+        Weight_edit = (EditText) findViewById(R.id.weight_text_box);
        //sets defualt value for spinners
         rep_list.add(0, "Reps");
         set_list.add(0, "Sets");
-        weight_list.add(0, "Weight");
+
         // add items to rep list and set list
         for(int i = 1; i <= 25; i++){
             set_list.add(i,Integer.toString(i));
             rep_list.add(i, Integer.toString(i));
         }
-        //add items to weight list
-        for(int i = 1;i <= 500; i++ ){
-            weight_list.add(i, Integer.toString(i));
-        }
+
 
         //Adapter for set spinner
         ArrayAdapter<String> Set_adapter = new ArrayAdapter(
@@ -75,10 +72,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         ArrayAdapter<String> Rep_adapter = new ArrayAdapter(
                 this, android.R.layout.simple_spinner_item, rep_list
         );
-        //Adapter for weight spinner
-        ArrayAdapter<String> Weight_adapter = new ArrayAdapter(
-                this, android.R.layout.simple_spinner_item, weight_list
-        );
+
 
         // Assign the dropdown items in the set spinner
         Set_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -88,10 +82,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         Rep_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Rep_spinner.setAdapter(Rep_adapter);
         Rep_spinner.setSelection(0);
-        // assign the dropdown items in the weight spinner
-        Weight_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Weight_spinner.setAdapter(Weight_adapter);
-        Weight_spinner.setSelection(0);
+
         // buttons and text fields being connected to vars
         Button addToWorkout = (Button) findViewById(R.id.Add_exercise_button);
         final EditText exerciseName = (EditText) findViewById(R.id.Exercise_name_edit);
@@ -104,25 +95,26 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 //if the user did not select or fill in a field then the error message is displayed
                 if(Rep_spinner.getSelectedItemPosition() == 0 || Set_spinner.getSelectedItemPosition() == 0 ||
-                        Weight_spinner.getSelectedItemPosition() == 0){
+                        Weight_edit.getText().toString().isEmpty()|| Weight_edit.getText().toString() == ""){
                     errorText.setVisibility(View.VISIBLE);
                 } else{
                     //gets the name of the exercise
                     nameOfExercise = exerciseName.getText().toString();
                     //gets the weight set and rep count
-                    weightOfExercise = Weight_spinner.getSelectedItemPosition();
+                    weightText = Weight_edit.getText().toString();
+                    weightOfExercise = Integer.parseInt(weightText);
                     repsOfExercise = Rep_spinner.getSelectedItemPosition();
                     setOfExercise = Set_spinner.getSelectedItemPosition();
                     //adds the exercise to a list of exercises so that adding to a workout is easy
                     listOfExc.add(new Exercise(nameOfExercise, repsOfExercise, setOfExercise,weightOfExercise));
-                    //hides error text if it was previusly displayed
+                    //hides error text if it was previously displayed
                     errorText.setVisibility(View.INVISIBLE);
                     //puts the exercise into the textView field so user can see previusly entered exercises
                     exerciseInWorkout.append(nameOfExercise + " " + setOfExercise + " x " + repsOfExercise +
                             " " + weightOfExercise +"lbs. \n" );
                     //resets the fields making it easier on the user
                     exerciseName.setText("");
-                    Weight_spinner.setSelection(0);
+                    Weight_edit.setText("");
                     Rep_spinner.setSelection(0);
                     Set_spinner.setSelection(0);
                 }
