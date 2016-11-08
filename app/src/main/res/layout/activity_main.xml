@@ -29,6 +29,18 @@
             android:layout_weight="0.20" />
 
         <Button
+            android:text="@string/create_new_workout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_workout_button"
+            android:minWidth="200dp"
+            android:layout_above="@+id/past_workout_button"
+            android:layout_centerHorizontal="true"
+            android:onClick="CreateNewWorkout"
+            android:layout_weight="0.24"
+            android:textSize="24sp" />
+
+        <Button
             android:text="@string/start_workout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,18 +52,6 @@
             android:layout_alignStart="@+id/create_workout_button"
             android:onClick="StartWorkout"
             android:layout_weight="0.26"
-            android:textSize="24sp" />
-
-        <Button
-            android:text="@string/create_new_workout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/create_workout_button"
-            android:minWidth="200dp"
-            android:layout_above="@+id/past_workout_button"
-            android:layout_centerHorizontal="true"
-            android:onClick="CreateNewWorkout"
-            android:layout_weight="0.24"
             android:textSize="24sp" />
 
         <Button

@@ -8,10 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.SimpleAdapter;
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +34,9 @@ public class Start_Workout_Activity extends AppCompatActivity {
     private List<Exercise> exerciseList;
     private ListView itemListView;
     private TextView exercise_name_TextView;
+    private Button complete_button;
     private ListView viewWorkout;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
         start_workout_button = (Button) findViewById(R.id.start_workout_button);
         exercise_name_TextView = (TextView) findViewById(R.id.exercise_name_TextView);
         itemListView = (ListView) findViewById(R.id.Exercise_List_View);
+        complete_button = (Button) findViewById(R.id.finish_workout_button);
 
         // Read in the list of workouts currently stored for the user
         final List<Workout> prevWorkouts = new Workout_Reader().read(this, Constants.STANDARD_FILE);
@@ -79,7 +85,21 @@ public class Start_Workout_Activity extends AppCompatActivity {
         });
 
 
-
+        complete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = select_workout_spinner.getSelectedItem().toString();
+                for(Workout temp: prevWorkouts) {
+                    if (temp.getWorkout_name().equals(name)) {
+                        temp.toggleCompleted();
+                        temp.saveWorkout(context, Constants.COMPLETED_FILE);
+                        Intent mainIntent = new Intent(context, MainActivity.class);
+                        startActivity(mainIntent);
+                        return;
+                    }
+                }
+            }
+        });
         //create workout in ActivityMain only once
 
 
@@ -126,6 +146,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
         ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
 
         exercise_name_TextView.setText(temp.getWorkout_name());
+        complete_button.setVisibility(View.VISIBLE);
 
         exerciseList = temp.getExercise_list();
         for (Exercise item : exerciseList) {

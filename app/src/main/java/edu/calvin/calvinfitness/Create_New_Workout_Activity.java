@@ -146,6 +146,9 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+
+                Intent mainIntent = new Intent(context, MainActivity.class);
+                startActivity(mainIntent);
             }
         });
 

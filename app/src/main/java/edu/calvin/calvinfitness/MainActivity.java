@@ -34,9 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      //  exercise_list.add(new Exercise("Squat", 12, 3, 100));
-        //Workout workout_example = new Workout(exercise_list, "Example Workout");
-
+/*        try {
+            FileOutputStream writer = openFileOutput(Constants.COMPLETED_FILE, Context.MODE_PRIVATE);
+            writer.write("".getBytes());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+*/
     }
 
     /*called when user clicks on start_workout_button

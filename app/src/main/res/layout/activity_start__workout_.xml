@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/exercise_name_TextView"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:paddingTop="10dp"
                 android:paddingRight="15dp"
                 android:layout_weight="0.10" />
@@ -54,6 +54,14 @@
                 android:layout_weight="1"
                 android:textSize="24sp"
                 android:paddingTop="10dp" />
+
+            <Button
+                android:text="Completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/finish_workout_button"
+                android:layout_weight="0.10"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
