@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,7 +17,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Arrays;
 
 /*
 The Start Workout activity gives users the ability to start and fill in data for a workout. This
@@ -43,7 +40,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start__workout_);
         Intent intent = getIntent();
-        setTitle("Select Workout");
+        setTitle("Start Workout");
 
         select_workout_spinner = (Spinner) findViewById(R.id.select_workout_spinner);
         start_workout_button = (Button) findViewById(R.id.start_workout_button);
@@ -135,8 +132,8 @@ public class Start_Workout_Activity extends AppCompatActivity {
             case R.id.home_page_about:
                 startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
-            //case R.id.help_page_about:
-            //    startActivity(new Intent(getApplicationContext(), StartWorkoutAboutActivity.class));
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), StartWorkoutHelpActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

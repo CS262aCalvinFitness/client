@@ -8,7 +8,7 @@ import android.view.Menu;
  * @date: 10/10/2016
  */
 
-public class StartWorkoutAboutActivity extends MainActivity {
+public class StartWorkoutHelpActivity extends MainActivity {
 
     /*
      * Called when this activity is called
@@ -21,7 +21,7 @@ public class StartWorkoutAboutActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_start_workout);
+        setContentView(R.layout.activity_help_start_workout);
         setTitle("Start Workout: Help");
     }
 

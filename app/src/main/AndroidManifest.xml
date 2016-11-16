@@ -19,9 +19,9 @@
         <activity android:name=".See_Previous_Workouts_Activity" />
         <activity android:name=".Start_Workout_Activity"></activity>
         <activity android:name=".HomePageAboutActivity"></activity>
-        <activity android:name=".StartWorkoutAboutActivity"></activity>
-        <activity android:name=".ViewPastWorkoutAboutActivity"></activity>
-        <activity android:name=".CreateWorkoutAboutActivity"></activity>
+        <activity android:name=".StartWorkoutHelpActivity"></activity>
+        <activity android:name=".ViewPastWorkoutHelpActivity"></activity>
+        <activity android:name=".CreateWorkoutHelpActivity"></activity>
         <activity android:name=".HomePageHelpActivity"></activity>
     </application>
 
