@@ -1,28 +1,22 @@
 <resources>
     <string name="app_name">Calvin Fitness</string>
-    <string name="select_workout_text">Select a workout from either of the two dropdown menus:
-    Select Previously Saved Workout for a list of saved favorite for a list of saved favorite workouts
-    Select Quick Workout for a list of premade workouts.</string>
+    <string name="select_workout_text">Select a workout from the dropdown menu:
+    Select Previously Saved Workout for a list of saved workouts.</string>
     <string name="previous_workout_text">Select a previously completed workout from the dropdown
         menu to view the results.</string>
     <string name="Calvin_Fitness_About">CalvinFitness was created by Ethan Clark, Russell Clousing, Mark Davis, Matt Kotva,
         and Mitch Stark for their CS262 Project at Calvin College, fall of 2016.</string>
     <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
-        workouts an ease! Select one of three buttons on the home page to get started!</string>
+        workouts an ease! Select one of the four buttons on the home page to get started!</string>
     <string name="about_title">About</string>
     <string name="help_title">Help</string>
     <string name="create_new_workout">Create New Workout</string>
     <string name="start_workout">Start Workout</string>
     <string name="view_previous_workout">View Previous Workout</string>
     <string name="about_create_workout1">1. Enter Workout Name</string>
-    <string name="about_create_workout2">2. Enter Date</string>
-    <string name="about_create_workout3">3. Choose Exercises</string>
-    <string name="about_create_workout4">a. Select Exercise from dropdown menu</string>
-    <string name="about_create_workout5">b. Enter new exercise</string>
-    <string name="about_create_workout6">c. Import workout from button at bottom</string>
-    <string name="about_create_workout7">4. Once complete</string>
-    <string name="about_create_workout8">a. Save workout to view results later</string>
-    <string name="about_create_workout9">b. Export workout with button at bottom</string>
+    <string name="about_create_workout3">2. Enter Exercises</string>
+    <string name="about_create_workout7">3. Once complete</string>
+    <string name="about_create_workout8">a. Click Save Workout Button to save workout</string>
     <string name="Workout_Name_TextView">Workout Name:</string>
     <string name="Date_TextView">Date:</string>
     <string name="WorkoutName_EditText" />
@@ -47,21 +41,4 @@
     <string name="Number_Weight" />
     <string name="Separator_TextView">:</string>
     <string name="save_workout">Save Workout</string>
-    <string-array name="quick_workout_array" >
-        <item> Quick Legs </item>
-        <item> Quick Chest </item>
-        <item> Quick Back </item>
-        <item> Quick Shoulders </item>
-    </string-array>
-    <string-array name="saved_workout_array">
-        <item> My Saved workout 1</item>
-        <item> My Saved workout 2 </item>
-        <item> My Saved workout 3 </item>
-    </string-array>
-    <string-array name="quick_exercise_array">
-        <item> Exercise 1</item>
-        <item> Exercise 2</item>
-        <item> Exericse 3</item>
-    </string-array>
-
 </resources>

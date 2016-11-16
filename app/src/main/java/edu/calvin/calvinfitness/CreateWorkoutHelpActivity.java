@@ -9,7 +9,7 @@ import android.view.Menu;
  * @date: 10/11/2016
  */
 
-public class CreateWorkoutAboutActivity extends MainActivity {
+public class CreateWorkoutHelpActivity extends MainActivity {
 
     /*
      * onCreate() is run when this activity is called
@@ -22,7 +22,7 @@ public class CreateWorkoutAboutActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_create_workout);
+        setContentView(R.layout.activity_help_create_workout);
         setTitle("Create Workout: Help");
     }
 

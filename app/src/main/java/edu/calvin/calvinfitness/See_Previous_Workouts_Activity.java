@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Arrays;
 
 /*
 This activity shows the user the previous workouts that they have completed. This activity is shown
@@ -104,7 +103,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
             case R.id.help_page_about:
-                startActivity(new Intent(getApplicationContext(), ViewPastWorkoutAboutActivity.class));
+                startActivity(new Intent(getApplicationContext(), ViewPastWorkoutHelpActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

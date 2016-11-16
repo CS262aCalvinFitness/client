@@ -171,7 +171,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
                 return true;
             case R.id.help_page_about:
-                startActivity(new Intent(getApplicationContext(), CreateWorkoutAboutActivity.class));
+                startActivity(new Intent(getApplicationContext(), CreateWorkoutHelpActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
