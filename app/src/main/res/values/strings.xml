@@ -43,4 +43,13 @@
     <string name="save_workout">Save Workout</string>
     <string name="share_users">Users</string>
     <string name="share_workouts">Shared Workouts</string>
+    <string name="find_shared_workouts">Find Shared Workouts</string>
+    <string-array name="shared_users">
+        <item>mjs73</item>
+        <item>ajw23</item>
+    </string-array>
+    <string-array name="shared_workout">
+        <item>Workout 1</item>
+        <item>Workout 2</item>
+    </string-array>
 </resources>
