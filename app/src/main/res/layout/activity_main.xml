@@ -19,14 +19,13 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="268dp"
+            android:layout_height="151dp"
             app:srcCompat="@drawable/weights"
             android:layout_alignLeft="@+id/start_workout_button"
             android:layout_alignStart="@+id/start_workout_button"
             android:id="@+id/imageView"
             android:layout_alignRight="@+id/start_workout_button"
-            android:layout_alignEnd="@+id/start_workout_button"
-            android:layout_weight="0.20" />
+            android:layout_alignEnd="@+id/start_workout_button" />
 
         <Button
             android:text="@string/create_new_workout"
@@ -64,6 +63,18 @@
             android:layout_alignLeft="@+id/create_workout_button"
             android:layout_alignStart="@+id/create_workout_button"
             android:onClick="PastWorkout"
+            android:layout_weight="0.28"
+            android:textSize="24sp" />
+
+        <Button
+            android:text="@string/find_shared_workouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/create_workout_button"
+            android:layout_alignStart="@+id/create_workout_button"
+            android:onClick="SharedWorkout"
             android:layout_weight="0.31"
             android:textSize="24sp" />
 

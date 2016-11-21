@@ -70,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*called when the user clicks on the past_workout_button
+    * @param View - the view that has been clicked
+    * @return - void
+    */
+    public void SharedWorkout(View view){
+        Intent intent = new Intent(this, Shared_Workouts.class);
+        startActivity(intent);
+    }
+
     /**
      * onCreateOptionsMenu creates the menu at the top of the page layout
      *
