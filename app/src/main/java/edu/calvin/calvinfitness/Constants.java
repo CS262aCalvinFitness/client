@@ -1,7 +1,9 @@
 package edu.calvin.calvinfitness;
 
-/**
- * Created by mitchstark on 11/7/16.
+/*
+ * Created by Mitch Stark on 11/7/16.
+ *
+ * Constants contains the names of the three files that are used to store workouts for this application
  */
 
 public class Constants {
