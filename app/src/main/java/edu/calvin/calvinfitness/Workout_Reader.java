@@ -13,13 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * Created by mitchstark on 10/24/16.
+ * Created by Mitch Stark on 10/24/16.
+ *
+ * Workout_Reader reads in workouts from the given file name
  */
 
 public class Workout_Reader {
+
+    /*
+     * Constructor for the Workout_Reader class
+     *
+     * @param: context
+     * @param: file_name
+     * @return: none
+     */
     public List<Workout> read(Context context, String file_name) {
+
         Gson gson = new GsonBuilder().create();
         List<Workout> workouts = new ArrayList<>();
+
         try {
             FileInputStream reader = context.openFileInput(file_name);
             int content;
@@ -38,9 +50,8 @@ public class Workout_Reader {
         } catch (Exception e) {
             System.out.println("Unsuccessful reading of [" + file_name + "]: " + e.toString());
         }
+
         return workouts;
 
     }
-
-    //change up to read from completed file
 }

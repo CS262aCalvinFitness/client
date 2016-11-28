@@ -17,15 +17,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /*
-* NOTES FOR PERSON DOING SAVE!!!!!
-* add the list of exercises to a workout and save the workout to a gson.
-*
-*
-* */
-/*
-This activity gives the user the option to create a new workout. This activity shows up when the
-"Create New Workout" button is clicked from the MainActivity.
+ * This activity gives the user the option to create a new workout. This activity shows up when the
+ *      "Create New Workout" button is clicked from the MainActivity.
  */
 public class Create_New_Workout_Activity extends AppCompatActivity {
 
@@ -35,7 +30,6 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     private Spinner Rep_spinner;
     private List <String> rep_list = new ArrayList<String>();
     private EditText Weight_edit;
-
     private String nameOfExercise;
     private int weightOfExercise;
     private String weightText;
@@ -43,17 +37,27 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     private int repsOfExercise;
     private List <Exercise> listOfExc = new ArrayList<Exercise>();
 
+    /*
+     * onCreate() overrides the default onCreate() and sets the activity_create__new__workout_ layout
+     *
+     * Also, sets the dropdown menus for the Sets and Reps selection
+     *
+     * @param: savedInstanceState
+     * @return: none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__new__workout_);
         Intent intent = getIntent();
         setTitle("Create New Workout");
+
         //set spinner to spinner widgets
         Rep_spinner = (Spinner) findViewById(R.id.Number_of_reps_spinner);
         Set_spinner = (Spinner) findViewById(R.id.num_of_sets_spinner);
         Weight_edit = (EditText) findViewById(R.id.weight_text_box);
-       //sets defualt value for spinners
+
+        //sets defualt value for spinners
         rep_list.add(0, "Reps");
         set_list.add(0, "Sets");
 
@@ -90,6 +94,8 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         final TextView errorText = (TextView) findViewById(R.id.error_text_field);
         final TextView exerciseInWorkout = (TextView) findViewById(R.id.Exercises_Text_Field);
         errorText.setVisibility(View.INVISIBLE);
+
+        // Set the addToWorkout onClickListener button
         addToWorkout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +127,11 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
             }
         });
 
+        // Get the current context and access to the Save New Workout button
         final Context context = this;
         Button button = (Button) findViewById(R.id.save_new_workout);
+
+        // Set the onClickListener for the Save New Workout button
         button.setOnClickListener(new OnClickListener()
         {
             @Override
@@ -146,7 +155,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
 
     }
 
-    /**
+    /*
      * onCreateOptionsMenu creates the menu at the top of the page layout
      *
      * @param: menu
@@ -158,7 +167,8 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         return true;
     }
 
-    /* onOptionsItemSelected performs an action if an menu item is selected
+    /*
+     * onOptionsItemSelected performs an action if an menu item is selected
      *
      * @param: item
      * @return: true -> if About item is clicked

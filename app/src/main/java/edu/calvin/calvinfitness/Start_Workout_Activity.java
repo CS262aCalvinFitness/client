@@ -19,8 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /*
-The Start Workout activity gives users the ability to start and fill in data for a workout. This
-activity is shown when the "Start Workout" button is clicked from MainActivity.
+ * The Start Workout activity gives users the ability to start and fill in data for a workout. This
+ *      activity is shown when the "Start Workout" button is clicked from MainActivity.
  */
 public class Start_Workout_Activity extends AppCompatActivity {
 
@@ -35,13 +35,23 @@ public class Start_Workout_Activity extends AppCompatActivity {
     private ListView viewWorkout;
     private Context context = this;
 
+    /*
+     * onCreate() overrides the default onCreate() and sets the layout to activity_start__workout
+     *
+     * It also sets the spinner with the workout names for the user to choose from
+     *
+     * @param: savedInstanceState
+     * @return: none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start__workout_);
         Intent intent = getIntent();
         setTitle("Start Workout");
 
+        // Get access to the various layout widgets
         select_workout_spinner = (Spinner) findViewById(R.id.select_workout_spinner);
         start_workout_button = (Button) findViewById(R.id.start_workout_button);
         exercise_name_TextView = (TextView) findViewById(R.id.exercise_name_TextView);
@@ -68,7 +78,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
         select_workout_spinner.setSelection(0);
 
 
-        //when start workout button is clicked.
+        // When start workout button is clicked.
         start_workout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +91,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
             }
         });
 
-
+        // When the complete button is clicked.
         complete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +118,7 @@ public class Start_Workout_Activity extends AppCompatActivity {
          */
     }
 
-    /**
+    /*
      * onCreateOptionsMenu creates the menu at the top of the page layout
      *
      * @param: menu
@@ -120,7 +130,8 @@ public class Start_Workout_Activity extends AppCompatActivity {
         return true;
     }
 
-    /* onOptionsItemSelected performs an action if an menu item is selected
+    /*
+     * onOptionsItemSelected performs an action if an menu item is selected
      *
      * @param: item
      * @return: true -> if About item is clicked
@@ -139,12 +150,22 @@ public class Start_Workout_Activity extends AppCompatActivity {
         }
     }
 
+    /*
+     * updateDisplay() updates the ListView for the exercises
+     *
+     * @param: temp - a Workout object
+     * @return: none
+     */
     private void updateDisplay(Workout temp) {
+
+        // Create an ArrayList
         ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
 
+        // Fill in the workout name and give visibility to the complete button
         exercise_name_TextView.setText(temp.getWorkout_name());
         complete_button.setVisibility(View.VISIBLE);
 
+        // Add exercises from the ExerciseList to the ArrayList data
         exerciseList = temp.getExercise_list();
         for (Exercise item : exerciseList) {
             HashMap<String, String> map = new HashMap<String, String>();
@@ -155,10 +176,12 @@ public class Start_Workout_Activity extends AppCompatActivity {
             data.add(map);
         }
 
+        // Create lists for the adapter below
         int resource = R.layout.start_exercise_item;
         String[] from = {"name", "sets", "reps", "weight"};
         int[] to = {R.id.Exercise_Name, R.id.Number_Sets, R.id.Number_Reps, R.id.Number_Weight};
 
+        // Set the SimpleAdapter and the itemListView
         SimpleAdapter adapter = new SimpleAdapter(this, data, resource, from, to);
         itemListView.setAdapter(adapter);
     }
