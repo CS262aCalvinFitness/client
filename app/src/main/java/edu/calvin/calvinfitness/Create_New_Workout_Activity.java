@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
@@ -49,7 +50,6 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__new__workout_);
-        Intent intent = getIntent();
         setTitle("Create New Workout");
 
         //set spinner to spinner widgets
@@ -57,7 +57,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         Set_spinner = (Spinner) findViewById(R.id.num_of_sets_spinner);
         Weight_edit = (EditText) findViewById(R.id.weight_text_box);
 
-        //sets defualt value for spinners
+        //sets default value for spinners
         rep_list.add(0, "Reps");
         set_list.add(0, "Sets");
 
@@ -88,9 +88,8 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         Rep_spinner.setSelection(0);
 
         // buttons and text fields being connected to vars
-        Button addToWorkout = (Button) findViewById(R.id.Add_exercise_button);
+        final Button addToWorkout = (Button) findViewById(R.id.Add_exercise_button);
         final EditText exerciseName = (EditText) findViewById(R.id.Exercise_name_edit);
-        EditText workoutName = (EditText) findViewById(R.id.WorkoutName_Edit);
         final TextView errorText = (TextView) findViewById(R.id.error_text_field);
         final TextView exerciseInWorkout = (TextView) findViewById(R.id.Exercises_Text_Field);
         errorText.setVisibility(View.INVISIBLE);
@@ -100,9 +99,11 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //if the user did not select or fill in a field then the error message is displayed
-                if(Rep_spinner.getSelectedItemPosition() == 0 || Set_spinner.getSelectedItemPosition() == 0 ||
-                        Weight_edit.getText().toString().isEmpty()|| Weight_edit.getText().toString() == ""){
+                if (Rep_spinner.getSelectedItemPosition() == 0 || Set_spinner.getSelectedItemPosition() == 0 ||
+                        Weight_edit.getText().toString().isEmpty()|| Weight_edit.getText().toString() == "" ||
+                        exerciseName.getText().toString().isEmpty() || exerciseName.getText().toString() == "") {
                     errorText.setVisibility(View.VISIBLE);
+                    dismissKeyboard(addToWorkout);
                 } else{
                     //gets the name of the exercise
                     nameOfExercise = exerciseName.getText().toString();
@@ -123,6 +124,7 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
                     Weight_edit.setText("");
                     Rep_spinner.setSelection(0);
                     Set_spinner.setSelection(0);
+                    dismissKeyboard(addToWorkout);
                 }
             }
         });
@@ -131,28 +133,48 @@ public class Create_New_Workout_Activity extends AppCompatActivity {
         final Context context = this;
         Button button = (Button) findViewById(R.id.save_new_workout);
 
+        // Get the workout name
+        final EditText workoutName = (EditText)findViewById(R.id.WorkoutName_Edit);
+
         // Set the onClickListener for the Save New Workout button
         button.setOnClickListener(new OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                EditText editText = (EditText)findViewById(R.id.WorkoutName_Edit);
-                Workout w = new Workout(listOfExc, editText.getText().toString());
-                w.saveWorkout(context, Constants.STANDARD_FILE);
+                if (workoutName.getText().toString().isEmpty() || workoutName.getText().toString() == "") {
+                    Context context1 = getApplicationContext();
+                    Toast toast1 = Toast.makeText(context1, "Please fill in workout name", Toast.LENGTH_LONG);
+                    toast1.show();
+                } else {
 
-                Context context = getApplicationContext();
-                CharSequence text = "Workout Saved";
-                int duration = Toast.LENGTH_SHORT;
+                    Workout w = new Workout(listOfExc, workoutName.getText().toString());
+                    w.saveWorkout(context, Constants.STANDARD_FILE);
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                    Context context = getApplicationContext();
+                    CharSequence text = "Workout Saved";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Intent mainIntent = new Intent(context, MainActivity.class);
-                startActivity(mainIntent);
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    Intent mainIntent = new Intent(context, MainActivity.class);
+                    startActivity(mainIntent);
+                }
             }
         });
 
+    }
+
+    /*
+     * Deitel's method for programmatically dismissing the keyboard.
+     *
+     * @param view the TextView currently being edited
+     */
+    private void dismissKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     /*

@@ -31,8 +31,8 @@
     <string name="EnterNewExercise_Button">Enter New Exercise</string>
     <string name="Workout_Name_text">Workout Name:</string>
     <string name="Exercise_Name_text">Exercise Name:</string>
-    <string name="Set_Count_text">Number of sets</string>
-    <string name="Rep_Count_text">Number of reps</string>
+    <string name="Set_Count_text">Sets</string>
+    <string name="Rep_Count_text">Reps</string>
     <string name="Weight_text">Weight</string>
     <string name="Add_exercise_button">ADD TO WORKOUT</string>
     <string name="Error_text_msg">Please fill in all Fields</string>
@@ -80,6 +80,8 @@
         completions."
     </string>
     <string name="title_activity_create__user_">Create_User_Activity</string>
-    <string name="shared_workout_button">Share Workout</string>
+    <string name="shared_workout_button">Save Workout</string>
+    <string name="lbs_label">lbs</string>
+    <string name="shared_workout_view">View Workout</string>
 
 </resources>
