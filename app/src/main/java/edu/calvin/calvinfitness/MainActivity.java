@@ -1,14 +1,11 @@
 package edu.calvin.calvinfitness;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.io.FileOutputStream;
 
 /*
  * This is the entry point of the app. It enters into the Main Activity, giving three options for
@@ -32,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         // This code allows us to remove the workouts stored on the local emulator
         try {
             FileOutputStream writer = openFileOutput(Constants.COMPLETED_FILE, Context.MODE_PRIVATE);
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-
+        */
     }
 
     /*

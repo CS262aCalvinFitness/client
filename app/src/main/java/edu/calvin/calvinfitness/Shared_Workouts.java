@@ -39,7 +39,7 @@ public class Shared_Workouts extends AppCompatActivity {
     private Spinner users_spinner;
     private List<Exercise> exerciseList;
     private Spinner workout_spinner;
-    private final List<Workout> sharedWorkouts;
+    //private final List<Workout> sharedWorkouts;
     private Context context = this;
     private ListView itemsListView;
     private TextView workout_name_TextView;
@@ -56,9 +56,8 @@ public class Shared_Workouts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared__workouts);
 
-        //new GetSharedWorkoutsTask().execute(createURL1());
-
-        //new GetUsersTask().execute(createURL());
+        //new GetUsersTask().execute(createURLusers());
+        //new GetSharedWorkoutsTask().execute(createURLworkouts());
 
         /*
         // Read in the list of shared workouts currently stored for the user
@@ -72,6 +71,7 @@ public class Shared_Workouts extends AppCompatActivity {
 
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
         workout_name_TextView = (TextView) findViewById(R.id.SharedWorkoutName);
+        workout_spinner = (Spinner) findViewById(R.id.workout_spinner);
     }
 
     /*
@@ -100,7 +100,7 @@ public class Shared_Workouts extends AppCompatActivity {
     */
     public void ViewWorkout(View view) {
         Context context = getApplicationContext();
-        CharSequence text = "View Workout " + workout_spinner.getSelectedItem().toString();
+        CharSequence text = "View Workout: " + workout_spinner.getSelectedItem().toString();
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -120,6 +120,36 @@ public class Shared_Workouts extends AppCompatActivity {
     }
 
     /*
+    * updateDisplay() updates the ListView in the xml file to display all the exercises from the selected
+    *      workout from the dropdown menu when the user presses the view past workout button
+    *
+    * @param: none
+    * @return: none
+    */
+    private void updateDisplay(Workout temp) {
+        ArrayList<HashMap<String, String>> data = new ArrayList<>();
+
+        workout_name_TextView.setText(temp.getWorkout_name());
+
+        exerciseList = temp.getExercise_list();
+        for (Exercise item : exerciseList) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("name", item.getName());
+            map.put("sets", Integer.toString(item.getSets()));
+            map.put("reps", Integer.toString(item.getReps()));
+            map.put("weight", Integer.toString(item.getWeights()));
+            data.add(map);
+        }
+
+        int resource = R.layout.exercise_item;
+        String[] from = {"name", "sets", "reps", "weight"};
+        int[] to = {R.id.Exercise_Name, R.id.Number_Sets, R.id.Number_Reps, R.id.Number_Weight};
+
+        SimpleAdapter adapter = new SimpleAdapter(this, data, resource, from, to);
+        itemsListView.setAdapter(adapter);
+    }
+
+    /*
     * Formats a URL for the webservice specified in the string resources.
     *
     * @param none
@@ -127,7 +157,7 @@ public class Shared_Workouts extends AppCompatActivity {
     *
     * Altered from Lab06
     */
-    private URL createURL1() {
+    private URL createURLworkouts() {
         try {
             String urlString;
 
@@ -232,7 +262,7 @@ public class Shared_Workouts extends AppCompatActivity {
      *
      * Altered from Lab06
      */
-    private URL createURL() {
+    private URL createURLusers() {
         try {
             String urlString;
 
@@ -298,7 +328,7 @@ public class Shared_Workouts extends AppCompatActivity {
             if (user != null) {
 
                 convertJSONtoArrayList(user);
-                updateDisplay1();
+                updateDisplayUserList();
 
             } else {
                 Toast.makeText(Shared_Workouts.this, "Failed to connect to service", Toast.LENGTH_SHORT).show();
@@ -338,7 +368,7 @@ public class Shared_Workouts extends AppCompatActivity {
      *
      * Altered from Lab06
      */
-    private void updateDisplay1() {
+    private void updateDisplayUserList() {
 
         /* Generate toast if userList is empty... */
         if (userList == null) {
@@ -358,35 +388,5 @@ public class Shared_Workouts extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         users_spinner.setAdapter(adapter);
         users_spinner.setSelection(0);
-    }
-
-    /*
-    * updateDisplay() updates the ListView in the xml file to display all the exercises from the selected
-    *      workout from the dropdown menu when the user presses the view past workout button
-    *
-    * @param: none
-    * @return: none
-    */
-    private void updateDisplay(Workout temp) {
-        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
-
-        workout_name_TextView.setText(temp.getWorkout_name());
-
-        exerciseList = temp.getExercise_list();
-        for (Exercise item : exerciseList) {
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put("name", item.getName());
-            map.put("sets", Integer.toString(item.getSets()));
-            map.put("reps", Integer.toString(item.getReps()));
-            map.put("weight", Integer.toString(item.getWeights()));
-            data.add(map);
-        }
-
-        int resource = R.layout.exercise_item;
-        String[] from = {"name", "sets", "reps", "weight"};
-        int[] to = {R.id.Exercise_Name, R.id.Number_Sets, R.id.Number_Reps, R.id.Number_Weight};
-
-        SimpleAdapter adapter = new SimpleAdapter(this, data, resource, from, to);
-        itemsListView.setAdapter(adapter);
     }
 }

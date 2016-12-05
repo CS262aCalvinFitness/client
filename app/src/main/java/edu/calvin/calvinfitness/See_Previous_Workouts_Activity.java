@@ -2,7 +2,6 @@ package edu.calvin.calvinfitness;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,15 +14,6 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -109,6 +99,22 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+
+        // Get access to the Share Workout button and set the onClickListener()
+        Button share_workout_button = (Button) findViewById(R.id.share_workout_button);
+        share_workout_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, "Workout Shared", Toast.LENGTH_LONG);
+                toast.show();
+
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

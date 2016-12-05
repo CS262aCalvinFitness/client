@@ -67,6 +67,12 @@
             android:scrollingCache="true"
             android:smoothScrollbar="true" />
 
+        <Button
+            android:text="@string/find_shared_workouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_workout_button" />
+
     </LinearLayout>
 
 </RelativeLayout>
