@@ -69,18 +69,16 @@
 
             <TextView
                 android:text="@string/Set_Count_text"
-                android:layout_width="match_parent"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/Set_Count_text"
-                android:textSize="18sp"
-                android:layout_weight="1" />
+                android:textSize="18sp" />
 
             <TextView
                 android:text="@string/Rep_Count_text"
-                android:layout_width="match_parent"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/Rep_count_text"
-                android:layout_weight="1"
                 android:textSize="18sp" />
 
             <TextView
@@ -99,16 +97,14 @@
             android:layout_weight="1.85">
 
             <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="87dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/num_of_sets_spinner"
-                android:layout_weight="1" />
+                android:id="@+id/num_of_sets_spinner" />
 
             <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="111dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/Number_of_reps_spinner"
-                android:layout_weight="1" />
+                android:id="@+id/Number_of_reps_spinner" />
 
             <EditText
                 android:layout_width="113dp"
@@ -116,6 +112,14 @@
                 android:inputType="numberSigned"
                 android:ems="10"
                 android:id="@+id/weight_text_box" />
+
+            <TextView
+                android:text="@string/lbs_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:layout_weight="1"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

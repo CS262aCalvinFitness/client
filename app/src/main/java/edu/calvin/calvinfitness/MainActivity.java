@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         // This code allows us to remove the workouts stored on the local emulator
-        /*try {
-            FileOutputStream writer = openFileOutput(Constants.STANDARD_FILE, Context.MODE_PRIVATE);
+        try {
+            FileOutputStream writer = openFileOutput(Constants.COMPLETED_FILE, Context.MODE_PRIVATE);
             writer.write("".getBytes());
         } catch (Exception e) {
             System.out.println(e.toString());

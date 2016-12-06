@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.SimpleAdapter;
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,8 +33,8 @@ public class Start_Workout_Activity extends AppCompatActivity {
     private ListView itemListView;
     private TextView exercise_name_TextView;
     private Button complete_button;
-    private ListView viewWorkout;
     private Context context = this;
+    private boolean empty_list = false;
 
     /*
      * onCreate() overrides the default onCreate() and sets the layout to activity_start__workout
@@ -48,7 +49,6 @@ public class Start_Workout_Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start__workout_);
-        Intent intent = getIntent();
         setTitle("Start Workout");
 
         // Get access to the various layout widgets
@@ -67,6 +67,11 @@ public class Start_Workout_Activity extends AppCompatActivity {
             workout_names.add(name);
         }
 
+        // Check if the workout list is empty
+        if (workout_names.isEmpty()) {
+            empty_list = true;
+        }
+
         //Adapter for saved spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, workout_names
@@ -82,10 +87,16 @@ public class Start_Workout_Activity extends AppCompatActivity {
         start_workout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = select_workout_spinner.getSelectedItem().toString();
-                for(Workout temp: prevWorkouts) {
-                    if (temp.getWorkout_name() == name) {
-                        Start_Workout_Activity.this.updateDisplay(temp);
+                if (empty_list) {
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, "No workout selected", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    String name = select_workout_spinner.getSelectedItem().toString();
+                    for (Workout temp : prevWorkouts) {
+                        if (temp.getWorkout_name() == name) {
+                            Start_Workout_Activity.this.updateDisplay(temp);
+                        }
                     }
                 }
             }
@@ -107,15 +118,6 @@ public class Start_Workout_Activity extends AppCompatActivity {
                 }
             }
         });
-        //create workout in ActivityMain only once
-
-
-
-        /*
-        read in JSON file to break down exercise name, weight, set rep
-        list view that loads up reps, weight and sets
-        start workout button with selected workout from spinner
-         */
     }
 
     /*

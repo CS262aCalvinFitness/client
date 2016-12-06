@@ -2,7 +2,6 @@ package edu.calvin.calvinfitness;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,15 +14,6 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +33,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
     private ListView itemsListView;
     private List<String> workout_names;
     private TextView workout_name_TextView;
-    private Context context = this;
+    private boolean empty_list = false;
 
     /*
      * onCreate() overrides the default onCreate() and sets activity_see__previous__workouts
@@ -62,8 +52,6 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_see__previous__workouts_);
         setTitle("View Past Workout Results");
 
-        //new GetSharedWorkoutsTask().execute(createURL());
-
         // Read in the list of completed workouts currently stored for the user
         final List<Workout> prevWorkouts = new Workout_Reader().read(this, Constants.COMPLETED_FILE);
         System.out.println(prevWorkouts);
@@ -73,15 +61,9 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             workout_names.add(name);
         }
 
-        /*
-        // Read in the list of shared workouts currently stored for the user
-        final List<Workout> sharedWorkouts = new Workout_Reader().read(this, Constants.SHARE_FILE);
-        System.out.println(sharedWorkouts);
-        for(int i = 0; i < sharedWorkouts.size(); i++) {
-            String name = sharedWorkouts.get(i).getWorkout_name();
-            workout_names.add(name);
+        if (workout_names.isEmpty()) {
+            empty_list = true;
         }
-        */
 
         // Create variables for the Spinner and the ListView of this .xml content
         past_workout_spinner = (Spinner) findViewById(R.id.previous_result_spinner);
@@ -105,129 +87,36 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                String name = past_workout_spinner.getSelectedItem().toString();
-                for(Workout temp: prevWorkouts) {
-                    if (temp.getWorkout_name() == name) {
-                        See_Previous_Workouts_Activity.this.updateDisplay(temp);
+                if (empty_list) {
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, "No workout selected", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    String name = past_workout_spinner.getSelectedItem().toString();
+                    for (Workout temp : prevWorkouts) {
+                        if (temp.getWorkout_name() == name) {
+                            See_Previous_Workouts_Activity.this.updateDisplay(temp);
+                        }
                     }
                 }
-
-                /*
-                for (Workout temp: sharedWorkouts) {
-                    if (temp.getWorkout_name() == name) {
-                        See_Previous_Workouts_Activity.this.updateDisplay(temp);
-                    }
-                }
-                */
-
             }
         });
-    }
 
-    /*
-     * Formats a URL for the webservice specified in the string resources.
-     *
-     * @param none
-     * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/sharedworkouts/
-     *
-     * Altered from Lab06
-     */
-    private URL createURL() {
-        try {
-            String urlString;
+        // Get access to the Share Workout button and set the onClickListener()
+        Button share_workout_button = (Button) findViewById(R.id.share_workout_button);
+        share_workout_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, "Workout Shared", Toast.LENGTH_LONG);
+                toast.show();
 
-            urlString = "http://cs262.cs.calvin.edu:8081/fitness/sharedworkouts/2";
-
-            return new URL(urlString);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Failed to make URL", Toast.LENGTH_SHORT).show();
-        }
-
-        return null;
-    }
-
-    /*
-     * GetSharedWorkoutsTask class established connection with the web server,
-     *      and gets the JSON information from the server.
-     */
-    private class GetSharedWorkoutsTask extends AsyncTask<URL, Void, JSONObject> {
-
-        /*
-         * doInBackground() connects to the appropriate server when an instance of GetSharedWorkoutsTask
-         *      is created (is done in the background obviously)
-         *
-         * @param: URL... params
-         * @return JSONObject
-         */
-        @Override
-        protected JSONObject doInBackground(URL... params) {
-            HttpURLConnection connection = null;
-            StringBuilder result = new StringBuilder();
-            try {
-                connection = (HttpURLConnection) params[0].openConnection();
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    BufferedReader reader = new BufferedReader(
-                            new InputStreamReader(connection.getInputStream()));
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-                    return new JSONObject(result.toString());
-                } else {
-                    throw new Exception();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                assert connection != null;
-                connection.disconnect();
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
             }
-            return null;
-        }
-        /*
-        * onPostExecute() calls the necessary methods if a workout was returned from
-        *      the doInBackground() method above
-        *
-        * @param: JSONObject workout
-        * @return: none
-        */
-        @Override
-        protected void onPostExecute(JSONObject workout) {
-            if (workout != null) {
-
-                convertJSON(workout);
-
-            } else {
-                Toast.makeText(See_Previous_Workouts_Activity.this, "Failed to connect to service", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    /*
-    * Converts the JSON workout information to a workout and saves the workouts to the shared_file
-    *
-    * @param workout
-    * @return: none
-    *
-    * Altered from Lab06
-    */
-    private void convertJSON(JSONObject workout) {
-
-        try {
-            Workout workout_one = new Workout(workout.getString("workout_name"));
-            JSONArray exercises = workout.getJSONArray("exercise_list");
-            for (int i = 0; i < exercises.length(); i++) {
-                JSONObject object = exercises.getJSONObject(i);
-                Exercise temp_exercise = new Exercise(object.getString("Name"), object.getInt("Reps"), object.getInt("Sets"),
-                            object.getInt("Weight"));
-                workout_one.addExercise(temp_exercise);
-            }
-            workout_one.saveWorkout(context, Constants.SHARE_FILE);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     /*
