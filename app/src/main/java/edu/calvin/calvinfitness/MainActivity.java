@@ -16,8 +16,6 @@ import android.view.MenuItem;
  */
 public class MainActivity extends AppCompatActivity {
 
-    //private List<Exercise> exercise_list;
-
     /*
      * onCreate() overrides the default onCreate() and it sets the activity_main layout
      *
