@@ -82,9 +82,7 @@ Finally, view your results.</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+
     <string name="title_activity_create__user_">Create_User_Activity</string>
     <string name="shared_workout_button">Save Workout</string>
     <string name="lbs_label">lbs</string>
