@@ -66,8 +66,6 @@ public class Shared_Workouts extends AppCompatActivity {
         new GetUsersTask().execute(createURLusers());
         new GetSharedWorkoutsTask().execute(createURLworkouts());
 
-        updateDisplayWorkoutList();
-
         
 
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
@@ -95,10 +93,21 @@ public class Shared_Workouts extends AppCompatActivity {
      * @return: none
      */
     public void SaveWorkout(View view) {
+        List<Workout> workouts = new Workout_Reader().read(this, Constants.SHARE_FILE);
+
+        String workout_name = workout_spinner.getSelectedItem().toString();
+
+        for (Workout w : workouts) {
+            if (w.getWorkout_name().equals(workout_name)) {
+                w.saveWorkout(this, Constants.STANDARD_FILE);
+                break;
+            }
+        }
+
         Context context = getApplicationContext();
         CharSequence text = "Workout Saved to Start Workout List";
-        int duration = Toast.LENGTH_SHORT;
 
+        int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
@@ -421,7 +430,7 @@ public class Shared_Workouts extends AppCompatActivity {
         ArrayList<String> display_names = new ArrayList<>();
 
         for (Workout w: workouts) {
-            if (w.getUser_name().equals(user_name_selected)) {
+            if (w.getUser_id() == (userList.indexOf(user_name_selected) + 1)) {
                 display_names.add(w.getWorkout_name());
             }
         }

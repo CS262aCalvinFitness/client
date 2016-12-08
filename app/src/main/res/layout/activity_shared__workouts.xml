@@ -83,16 +83,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:onClick="SaveWorkout"
-                android:layout_weight="1.09" />
+                android:layout_weight="1.09"
+                android:onClick="SaveWorkout"/>
 
-            <Button
-                android:text="@string/shared_workout_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/view_shared_workout_button"
-                android:layout_weight="1.73"
-                android:onClick="ViewWorkout" />
         </LinearLayout>
     </LinearLayout>
 

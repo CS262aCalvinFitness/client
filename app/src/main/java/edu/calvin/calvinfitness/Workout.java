@@ -23,7 +23,7 @@ public class Workout {
     private String workout_name;
     private Date workout_date;
     private Boolean completed;
-    private String user_name;
+    private Integer userID;
 
     /**
      * Constructor that takes List of exercises, name, and date
@@ -34,12 +34,12 @@ public class Workout {
      * @param: userName
      * @return: none
      */
-    public Workout(List<Exercise> exercises, String name, Date date, String userName) {
+    public Workout(List<Exercise> exercises, String name, Date date, Integer userName) {
         exercise_list = exercises;
         workout_name = name;
         workout_date = date;
         completed = false;
-        user_name = userName;
+        userID = userName;
     }
 
     /*
@@ -55,7 +55,7 @@ public class Workout {
         workout_name = name;
         workout_date = date;
         completed = false;
-        user_name = Constants.USER_NAME;
+        userID = Constants.USER_ID;
     }
 
     /*
@@ -70,7 +70,7 @@ public class Workout {
         workout_name = name;
         workout_date = Calendar.getInstance().getTime(); //sets the workout date as the current date
         completed = false;
-        user_name = Constants.USER_NAME;
+        userID = Constants.USER_ID;
     }
 
     /*
@@ -84,7 +84,7 @@ public class Workout {
         workout_name = name;
         workout_date = Calendar.getInstance().getTime();
         completed = false;
-        user_name = Constants.USER_NAME;
+        userID = Constants.USER_ID;
     }
 
     /*
@@ -185,7 +185,7 @@ public class Workout {
     }
 
 
-    public String getUser_name() { return user_name; }
+    public Integer getUser_id() { return userID; }
 
     /*
      * setDate() sets the date that the workout was completed
