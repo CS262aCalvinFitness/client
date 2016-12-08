@@ -35,6 +35,10 @@ Finally, view your results.</string>
     <string name="create_new_help_7">7.	Continue adding exercises until satisfied (steps 3 through 6)</string>
     <string name="create_new_help_8">8.	Hit the button labeled save workout to save the workout</string>
 
+    <string name="start_workout_intro">Here are some instructions for starting a workout</string>
+    <string name="start_workout_1">1.	On the dropdown menu, select a workout</string>
+    <string name="start_workout_2">2.	Press the 'Start' button</string>
+
     <string name="Workout_Name_TextView">Workout Name:</string>
     <string name="Date_TextView">Date:</string>
     <string name="WorkoutName_EditText" />
