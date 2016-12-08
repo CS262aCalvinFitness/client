@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity  {
         // Store values at the time of the login attempt.
         String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
+        Constants.USER_NAME = password;
 
         // Set the cancel boolean value to be false and the focusView view to be null
         boolean cancel = false;

@@ -13,11 +13,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.Streams;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -56,18 +62,12 @@ public class Shared_Workouts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared__workouts);
 
-        //new GetUsersTask().execute(createURLusers());
-        //new GetSharedWorkoutsTask().execute(createURLworkouts());
+        new GetUsersTask().execute(createURLusers());
+        new GetSharedWorkoutsTask().execute(createURLworkouts());
 
-        /*
-        // Read in the list of shared workouts currently stored for the user
-        sharedWorkouts = new Workout_Reader().read(this, Constants.SHARE_FILE);
-        System.out.println(sharedWorkouts);
-        for(int i = 0; i < sharedWorkouts.size(); i++) {
-            String name = sharedWorkouts.get(i).getWorkout_name();
-            workout_names.add(name);
-        }
-        */
+        updateDisplayWorkoutList();
+
+        
 
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
         workout_name_TextView = (TextView) findViewById(R.id.SharedWorkoutName);
@@ -176,7 +176,7 @@ public class Shared_Workouts extends AppCompatActivity {
      * GetSharedWorkoutsTask class established connection with the web server,
      *      and gets the JSON information from the server.
      */
-    private class GetSharedWorkoutsTask extends AsyncTask<URL, Void, JSONObject> {
+    private class GetSharedWorkoutsTask extends AsyncTask<URL, Void, JSONArray> {
 
         /*
          * doInBackground() connects to the appropriate server when an instance of GetSharedWorkoutsTask
@@ -186,7 +186,7 @@ public class Shared_Workouts extends AppCompatActivity {
          * @return JSONObject
          */
         @Override
-        protected JSONObject doInBackground(URL... params) {
+        protected JSONArray doInBackground(URL... params) {
             HttpURLConnection connection = null;
             StringBuilder result = new StringBuilder();
             try {
@@ -198,7 +198,7 @@ public class Shared_Workouts extends AppCompatActivity {
                     while ((line = reader.readLine()) != null) {
                         result.append(line);
                     }
-                    return new JSONObject(result.toString());
+                    return new JSONArray(result.toString());
                 } else {
                     throw new Exception();
                 }
@@ -218,9 +218,15 @@ public class Shared_Workouts extends AppCompatActivity {
         * @return: none
         */
         @Override
-        protected void onPostExecute(JSONObject workout) {
-            if (workout != null) {
-                convertJSON(workout);
+        protected void onPostExecute(JSONArray workouts) {
+            if (workouts != null) {
+                //put workouts into saved file
+                try {
+                    FileOutputStream writer = context.openFileOutput(Constants.SHARE_FILE, Context.MODE_PRIVATE);
+                    writer.write(workouts.toString().getBytes());
+                } catch (IOException e) {
+                    System.out.println("***ERROR*** could not print workout. " + e.toString());
+                }
 
             } else {
                 Toast.makeText(Shared_Workouts.this, "Failed to connect to service", Toast.LENGTH_SHORT).show();
@@ -351,8 +357,9 @@ public class Shared_Workouts extends AppCompatActivity {
 
         try {
             for (int i = 0; i < user_obj.length(); i++) {
-                String name = user_obj.getString(1);
+                String name = user_obj.getString(i);
                 userList.add(name);
+                System.out.println(name);
             }
 
         } catch (JSONException e) {
@@ -388,5 +395,31 @@ public class Shared_Workouts extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         users_spinner.setAdapter(adapter);
         users_spinner.setSelection(0);
+    }
+
+    private void updateDisplayWorkoutList() {
+        Spinner workout_spinner = (Spinner) findViewById(R.id.workout_spinner);
+
+        String user_name_selected = users_spinner.getSelectedItem().toString();
+
+        //create list of workouts to be selected
+        List<Workout> workouts = new Workout_Reader().read(this, Constants.SHARE_FILE);
+        ArrayList<String> display_names = new ArrayList<>();
+
+        for (Workout w: workouts) {
+            if (w.getUser_name().equals(user_name_selected)) {
+                display_names.add(w.getWorkout_name());
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, display_names
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workout_spinner.setAdapter(adapter);
+        workout_spinner.setSelection(0);
+
+
     }
 }

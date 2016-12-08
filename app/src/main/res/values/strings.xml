@@ -67,15 +67,6 @@ Finally, view your results.</string>
     <string name="share_workouts">Workouts</string>
     <string name="find_shared_workouts">Share Workout</string>
 
-    <string-array name="shared_users">
-        <item>mjs73</item>
-        <item>ajw23</item>
-    </string-array>
-    <string-array name="shared_workout">
-        <item>Workout 1</item>
-        <item>Workout 2</item>
-    </string-array>
-
     <string name="title_activity_login"> Calvin Fitness </string>
 
     <!-- Strings related to login -->

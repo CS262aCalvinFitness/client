@@ -23,6 +23,24 @@ public class Workout {
     private String workout_name;
     private Date workout_date;
     private Boolean completed;
+    private String user_name;
+
+    /**
+     * Constructor that takes List of exercises, name, and date
+     * This constructor is to be used by GSON when reading in files from the server
+     * @param: exercises
+     * @param: name
+     * @param: date
+     * @param: userName
+     * @return: none
+     */
+    public Workout(List<Exercise> exercises, String name, Date date, String userName) {
+        exercise_list = exercises;
+        workout_name = name;
+        workout_date = date;
+        completed = false;
+        user_name = userName;
+    }
 
     /*
      * Constructor that takes List of exercises, name, and date
@@ -37,6 +55,7 @@ public class Workout {
         workout_name = name;
         workout_date = date;
         completed = false;
+        user_name = Constants.USER_NAME;
     }
 
     /*
@@ -51,6 +70,7 @@ public class Workout {
         workout_name = name;
         workout_date = Calendar.getInstance().getTime(); //sets the workout date as the current date
         completed = false;
+        user_name = Constants.USER_NAME;
     }
 
     /*
@@ -64,6 +84,7 @@ public class Workout {
         workout_name = name;
         workout_date = Calendar.getInstance().getTime();
         completed = false;
+        user_name = Constants.USER_NAME;
     }
 
     /*
@@ -162,6 +183,9 @@ public class Workout {
             System.out.println("***ERROR*** could not print workout. " + e.toString());
         }
     }
+
+
+    public String getUser_name() { return user_name; }
 
     /*
      * setDate() sets the date that the workout was completed
