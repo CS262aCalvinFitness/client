@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -72,6 +73,19 @@ public class Shared_Workouts extends AppCompatActivity {
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
         workout_name_TextView = (TextView) findViewById(R.id.SharedWorkoutName);
         workout_spinner = (Spinner) findViewById(R.id.workout_spinner);
+        users_spinner = (Spinner) findViewById(R.id.spinner);
+
+        users_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateDisplayWorkoutList();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     /*
