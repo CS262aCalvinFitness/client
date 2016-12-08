@@ -25,10 +25,15 @@ Finally, view your results.</string>
     <string name="start_workout">Start Workout</string>
     <string name="view_previous_workout">View Previous Workout</string>
 
-    <string name="about_create_workout1">1. Enter Workout Name</string>
-    <string name="about_create_workout3">2. Enter Exercises</string>
-    <string name="about_create_workout7">3. Once complete</string>
-    <string name="about_create_workout8">a. Click Save Workout Button to save workout</string>
+    <string name="intro_help_create">Here are some instructions for creating a new workout</string>
+    <string name="create_new_help_1">1.	Enter a name for the workout</string>
+    <string name="create_new_help_2">2.	Enter the name of the exercise</string>
+    <string name="create_new_help_3">3.	Select how many sets</string>
+    <string name="create_new_help_4">4.	Select how many reps</string>
+    <string name="create_new_help_5">5.	Enter the weight in pounds</string>
+    <string name="create_new_help_6">6.	Hit the button labeled add to workout</string>
+    <string name="create_new_help_7">7.	Continue adding exercises until satisfied (steps 3 through 6)</string>
+    <string name="create_new_help_8">8.	Hit the button labeled save workout to save the workout</string>
 
     <string name="Workout_Name_TextView">Workout Name:</string>
     <string name="Date_TextView">Date:</string>

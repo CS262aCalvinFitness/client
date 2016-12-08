@@ -4,32 +4,65 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/about_create_workout1"
+        android:text="@string/intro_help_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:textSize="24sp" />
+        android:id="@+id/introhelpcreate"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="@string/about_create_workout3"
+        android:text="@string/create_new_help_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:textSize="24sp" />
+        android:id="@+id/helptext1"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="@string/about_create_workout7"
+        android:text="@string/create_new_help_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView10"
-        android:textSize="24sp" />
+        android:id="@+id/helptext2"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="@string/about_create_workout8"
+        android:text="@string/create_new_help_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView11"
-        android:textSize="18sp"
-        android:paddingLeft="20dp" />
+        android:id="@+id/helptext3"
+        android:textSize="18sp" />
 
+    <TextView
+        android:text="@string/create_new_help_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helptext4"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="@string/create_new_help_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helptext5"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:text="@string/create_new_help_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helptext6"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:text="@string/create_new_help_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helptext7"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:text="@string/create_new_help_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/helptext8"
+        android:textSize="18sp"/>
 </LinearLayout>
