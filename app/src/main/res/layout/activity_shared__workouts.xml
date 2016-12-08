@@ -34,8 +34,7 @@
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="11dp"
-            android:id="@+id/spinner"
-            android:entries="@array/shared_users"/>
+            android:id="@+id/spinner" />
 
         <TextView
             android:text="@string/share_workouts"
@@ -54,8 +53,7 @@
             android:layout_below="@+id/textView7"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="19dp"
-            android:id="@+id/workout_spinner"
-            android:entries="@array/shared_workout"/>
+            android:id="@+id/workout_spinner" />
 
         <TextView
             android:layout_width="match_parent"
@@ -85,16 +83,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:onClick="SaveWorkout"
-                android:layout_weight="1.09" />
+                android:layout_weight="1.09"
+                android:onClick="SaveWorkout"/>
 
-            <Button
-                android:text="@string/shared_workout_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/view_shared_workout_button"
-                android:layout_weight="1.73"
-                android:onClick="ViewWorkout" />
         </LinearLayout>
     </LinearLayout>
 

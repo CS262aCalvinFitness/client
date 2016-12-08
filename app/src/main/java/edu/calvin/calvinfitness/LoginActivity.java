@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity  {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private JSONArray users;
 
     // Create an index to keep track of entering in the usernames and passwords
     //      to the CREDENTIALS String Array
@@ -133,6 +135,7 @@ public class LoginActivity extends AppCompatActivity  {
         // Store values at the time of the login attempt.
         String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
+        Constants.USER_ID = getUserId(username);
 
         // Set the cancel boolean value to be false and the focusView view to be null
         boolean cancel = false;
@@ -343,6 +346,7 @@ public class LoginActivity extends AppCompatActivity  {
                     while ((line = reader.readLine()) != null) {
                         result.append(line);
                     }
+                    users = new JSONArray(result.toString());
                     return new JSONArray(result.toString());
                 } else {
                     throw new Exception();
@@ -397,6 +401,21 @@ public class LoginActivity extends AppCompatActivity  {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private Integer getUserId(String username) {
+        for(Integer i = 0; i < users.length(); i++) {
+            try {
+                if (users.getString(i).equals(username)) {
+                    return i + 1;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+                return -1;
+            }
+
+        }
+        return -1;
     }
 }
 
