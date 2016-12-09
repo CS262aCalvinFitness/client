@@ -39,6 +39,7 @@ public class Create_User_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (enter_password.getText().toString().equals(confirm_password.getText().toString())) {
                     new_username = user_id.getText().toString();
+                    System.out.println(new_username);
                     new PostUserTask().execute(createURLaddUser());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
@@ -85,7 +86,9 @@ public class Create_User_Activity extends AppCompatActivity {
             try {
                 // Hard-code a new player using JSON.
                 JSONObject jsonData = new JSONObject();
-                jsonData.put("username", new_username);
+                System.out.println(new_username);
+                jsonData.put("Username", new_username);
+                System.out.println(jsonData);
                 // Open the connection as usual.
                 connection = (HttpURLConnection) params[0].openConnection();
                 // Configure the connection for a POST, including outputing streamed JSON data.
