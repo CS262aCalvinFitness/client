@@ -21,14 +21,11 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /*
  * A login screen that offers login via email/password.

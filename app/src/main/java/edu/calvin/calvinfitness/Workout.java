@@ -5,6 +5,8 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;

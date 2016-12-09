@@ -62,6 +62,13 @@
             android:layout_weight="0.34"
             android:textSize="18sp" />
 
+        <Button
+            android:text="@string/shared_workout_view"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:id="@+id/view_shared_workout_button"
+            android:onClick="ViewWorkout" />
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="222dp"
