@@ -37,7 +37,7 @@ Finally, view your results.</string>
 
     <string name="start_workout_intro">Here are some instructions for starting a workout</string>
     <string name="start_workout_1">1.	On the dropdown menu, select a workout</string>
-    <string name="start_workout_2">2.	Press the 'Start' button</string>
+    <string name="start_workout_2">2.	Press the Start button</string>
 
     <string name="Workout_Name_TextView">Workout Name:</string>
     <string name="Date_TextView">Date:</string>
@@ -69,7 +69,7 @@ Finally, view your results.</string>
     <string name="save_workout">Save Workout</string>
     <string name="share_users">Users</string>
     <string name="share_workouts">Workouts</string>
-    <string name="find_shared_workouts">Share Workout</string>
+    <string name="find_shared_workouts">Find Shared Workouts</string>
 
     <string name="title_activity_login"> Calvin Fitness </string>
 

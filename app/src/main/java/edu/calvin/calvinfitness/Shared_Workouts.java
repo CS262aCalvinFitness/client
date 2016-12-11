@@ -14,10 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.internal.Streams;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +42,6 @@ public class Shared_Workouts extends AppCompatActivity {
     private Spinner users_spinner;
     private List<Exercise> exerciseList;
     private Spinner workout_spinner;
-    //private final List<Workout> sharedWorkouts;
     private Context context = this;
     private ListView itemsListView;
     private TextView workout_name_TextView;
@@ -65,8 +60,6 @@ public class Shared_Workouts extends AppCompatActivity {
 
         new GetUsersTask().execute(createURLusers());
         new GetSharedWorkoutsTask().execute(createURLworkouts());
-
-        
 
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
         workout_name_TextView = (TextView) findViewById(R.id.SharedWorkoutName);
@@ -129,17 +122,15 @@ public class Shared_Workouts extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        List<Workout> workouts = new Workout_Reader().read(this, Constants.SHARE_FILE);
 
-        /*
-        for (Workout temp: sharedWorkouts) {
-            if (temp.getWorkout_name() == name) {
-                See_Previous_Workouts_Activity.this.updateDisplay(temp);
+        String workout_name = workout_spinner.getSelectedItem().toString();
+
+        for (Workout temp: workouts) {
+            if (temp.getWorkout_name().equals(workout_name)) {
+                Shared_Workouts.this.updateDisplay(temp);
             }
          }
-         */
-
     }
 
     /*
@@ -151,7 +142,6 @@ public class Shared_Workouts extends AppCompatActivity {
     */
     private void updateDisplay(Workout temp) {
         ArrayList<HashMap<String, String>> data = new ArrayList<>();
-
         workout_name_TextView.setText(temp.getWorkout_name());
 
         exerciseList = temp.getExercise_list();
@@ -254,32 +244,6 @@ public class Shared_Workouts extends AppCompatActivity {
             } else {
                 Toast.makeText(Shared_Workouts.this, "Failed to connect to service", Toast.LENGTH_SHORT).show();
             }
-        }
-    }
-
-    /*
-    * Converts the JSON workout information to a workout and saves the workouts to the shared_file
-    *
-    * @param workout
-    * @return: none
-    *
-    * Altered from Lab06
-    */
-    private void convertJSON(JSONObject workout) {
-
-        try {
-            Workout workout_one = new Workout(workout.getString("workout_name"));
-            JSONArray exercises = workout.getJSONArray("exercise_list");
-            for (int i = 0; i < exercises.length(); i++) {
-                JSONObject object = exercises.getJSONObject(i);
-                Exercise temp_exercise = new Exercise(object.getString("Name"), object.getInt("Reps"), object.getInt("Sets"),
-                        object.getInt("Weight"));
-                workout_one.addExercise(temp_exercise);
-            }
-            workout_one.saveWorkout(context, Constants.SHARE_FILE);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
