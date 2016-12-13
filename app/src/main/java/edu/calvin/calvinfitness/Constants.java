@@ -11,4 +11,8 @@ public class Constants {
     static final String COMPLETED_FILE = "completed_workouts.json";
     static final String SHARE_FILE = "shared_workouts.json";
     static Integer USER_ID = -1;
+    static String USERNAME;
+    static Integer USER_ID_DATABASE;
+    static Integer WORKOUT_ID;
+    static Exercise CURRENT_EXERCISE;
 }

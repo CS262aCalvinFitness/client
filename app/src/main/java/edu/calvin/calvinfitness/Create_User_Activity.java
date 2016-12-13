@@ -40,6 +40,7 @@ public class Create_User_Activity extends AppCompatActivity {
                 if (enter_password.getText().toString().equals(confirm_password.getText().toString())) {
                     new_username = user_id.getText().toString();
                     System.out.println(new_username);
+                    Constants.USERNAME = new_username;
                     new PostUserTask().execute(createURLaddUser());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);

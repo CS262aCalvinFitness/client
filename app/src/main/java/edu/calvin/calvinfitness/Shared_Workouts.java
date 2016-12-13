@@ -344,7 +344,8 @@ public class Shared_Workouts extends AppCompatActivity {
 
         try {
             for (int i = 0; i < user_obj.length(); i++) {
-                String name = user_obj.getString(i);
+                JSONObject user = user_obj.getJSONObject(i);
+                String name = user.getString("Username");
                 userList.add(name);
                 System.out.println(name);
             }
