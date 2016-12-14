@@ -1,9 +1,12 @@
 package edu.calvin.calvinfitness;
 
 /*
- * Created by Mitch Stark on 11/7/16.
+ * Created by Mitch Stark and Ethan Clark on 11/7/16.
  *
  * Constants contains the names of the three files that are used to store workouts for this application
+ *      It also contains constant variables such as USER_ID for the Find Shared Workouts activity,
+ *      USERNAME and USER_ID_DATABASE to store the current users information, WORKOUT_ID to be used when
+ *      sharing a workout, and CURRENT_EXERCISE to keep track when sharing exercises for the shared workout.
  */
 
 public class Constants {

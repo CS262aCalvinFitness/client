@@ -19,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /*
- * This is the entry point of the app. It enters into the Main Activity, giving three options for
+ * This is the entry point of the app after the user login. It enters into the Main Activity, giving three options for
  *      where to go, as well as a welcome label.
  *
  * @param: none
@@ -212,8 +212,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.help_page_about:
                 startActivity(new Intent(getApplicationContext(), HomePageHelpActivity.class));
-            case R.id.activity_help_finding_workouts:
-                startActivity(new Intent(getApplicationContext(), HelpFindingWorkouts.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

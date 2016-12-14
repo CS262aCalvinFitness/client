@@ -28,7 +28,6 @@
         <activity android:name=".Start_Workout_Activity" />
         <activity android:name=".HomePageAboutActivity" />
         <activity android:name=".StartWorkoutHelpActivity" />
-        <activity android:name=".ViewPastWorkoutHelpActivity" />
         <activity android:name=".CreateWorkoutHelpActivity" />
         <activity android:name=".HomePageHelpActivity" />
         <activity android:name=".Shared_Workouts" />

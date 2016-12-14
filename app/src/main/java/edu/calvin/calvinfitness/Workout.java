@@ -25,7 +25,7 @@ public class Workout {
     private Boolean completed;
     private Integer userID;
 
-    /**
+    /*
      * Constructor that takes List of exercises, name, and date
      * This constructor is to be used by GSON when reading in files from the server
      * @param: exercises

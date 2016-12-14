@@ -403,10 +403,17 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
+    /*
+     * getUserId checks the JSONArray users from the database GET call to get the current user's ID
+     *
+     * @param: String username
+     * @return: Integer
+     */
     private Integer getUserId(String username) {
         for(Integer i = 0; i < users.length(); i++) {
             try {
-                if (users.getString(i).equals(username)) {
+                JSONObject object = users.getJSONObject(i);
+                if (object.getString("Username").equals(username)) {
                     return i + 1;
                 }
             } catch (Exception e) {

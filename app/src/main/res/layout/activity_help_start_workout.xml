@@ -5,20 +5,25 @@
 
     <TextView
         android:text="@string/start_workout_intro"
-        android:layout_width="match_parent"
+        android:layout_width="369dp"
         android:layout_height="wrap_content"
         android:id="@+id/helpstart1"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="22sp" />
     <TextView
         android:text="@string/start_workout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helpstart2"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" />
     <TextView
         android:text="@string/start_workout_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helpstart3"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="22sp" />
 </LinearLayout>

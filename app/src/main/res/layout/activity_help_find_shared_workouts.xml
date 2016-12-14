@@ -4,11 +4,14 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/previous_workout_text"
+        android:text="@string/text_find_shared_workouts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:paddingTop="20dp" />
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="22sp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" />
 </LinearLayout>

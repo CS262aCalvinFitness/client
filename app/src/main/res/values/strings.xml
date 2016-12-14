@@ -12,11 +12,7 @@
 
     <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
         workouts an ease! Select one of the four buttons on the home page to get started!</string>
-    <string name="help_finding_workouts">You can use the "View Past Workouts" feature of Calvin Fitness to view your completed workouts. The detailed steps of how to do this are as follows:
-First, click on the "View Previous Workout" button.
-Next, find the down arrow in the top right corner, and click it. Then, select the name of the workout that you would like to view.
-Then, click the "View Past Workout" button.
-Finally, view your results.</string>
+    <string name="help_finding_workouts">You can use the \"View Past Workouts\" feature of Calvin Fitness to view your completed workouts.\n\n1. Find the down arrow in the top right corner, and click it. Then, select the name of the workout that you would like to view.\n\n2. Click the \"View Past Workout\" button.\n\n3. View your results.\n\n4. If you want other users of the app to see this workout, press the Share Workout Button at the bottom of the screen.</string>
 
     <string name="about_title">About</string>
     <string name="help_finding_workouts_title">Help: Find Past Workouts</string>
@@ -87,5 +83,7 @@ Finally, view your results.</string>
     <string name="shared_workout_button">Save Workout</string>
     <string name="lbs_label">lbs</string>
     <string name="shared_workout_view">View Workout</string>
+    <string name="share_workout_button_label">Share Workout</string>
+    <string name="text_find_shared_workouts" >The Find Shared Workouts Activity allows users to find, view, and save workouts that other users have shared.\n\n1. Select a user from the Users Dropdown Menu.\n\n2. Select a workout from the Workouts Dropdown Menu.\n\n3. Press the View Workout Button to view the selected workout.\n\n4. If this workout looks good to you, press the Save Workout Button to save the workout to your Start Workout screen.</string>
 
 </resources>

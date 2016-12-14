@@ -74,6 +74,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             workout_names.add(name);
         }
 
+        // Set variable to check if the dropdown menu will be empty
         if (workout_names.isEmpty()) {
             empty_list = true;
         }
@@ -122,46 +123,18 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                // Get the name of the selected workout
                 name = past_workout_spinner.getSelectedItem().toString();
-                Context context = getApplicationContext();
+
+                // Share the appropriate workout to the database server
                 new PostWorkoutTask().execute(createURL());
 
+                // Take the user back to the MainActivity screen
+                Context context = getApplicationContext();
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    /*
-     * onCreateOptionsMenu creates the menu at the top of the page layout
-     *
-     * @param: menu
-     * @return: true
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_page_about, menu);
-        return true;
-    }
-
-    /*
-     * onOptionsItemSelected performs an action if an menu item is selected
-     *
-     * @param: item
-     * @return: true -> if About item is clicked
-     *          super.onCreateItemsSelected(item) -> otherwise
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home_page_about:
-                startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
-                return true;
-            case R.id.help_page_about:
-                startActivity(new Intent(getApplicationContext(), ViewPastWorkoutHelpActivity.class));
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     /*
@@ -195,10 +168,10 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
     }
 
     /*
-     * Formats a URL for the webservice specified in the string resources.
+     * Formats a URL for the webservice cs262.cs.calvin.edu:8081/fitness/sharedworkouts
      *
-     * @param none
-     * @return URL formatted for the course fitness server
+     * @param: none
+     * @return: URL formatted for the course fitness server
      */
     private URL createURL() {
         try {
@@ -213,17 +186,27 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
 
     /*
      * Inner class for POSTing a new, hard-coded workout to the course server asynchronously
-     * This is for testing purposes only.
+     *
+     * @param: URL and JSONArray
      */
     private class PostWorkoutTask extends AsyncTask<URL, Void, JSONArray> {
 
+        /*
+         * doInBackground is the tasks performed when an instance of PostWorkoutTask is created
+         *
+         * @param: URL
+         * @return: JSONArray
+         */
         @Override
         protected JSONArray doInBackground(URL... params) {
+
             HttpURLConnection connection = null;
             StringBuilder jsonText = new StringBuilder();
             JSONArray result = null;
+
             try {
-                // Hard-code a new player using JSON.
+
+                // Hard-code a new workout using JSON.
                 JSONObject jsonWorkout = new JSONObject();
                 for (Workout workout: prevWorkouts) {
                     if (workout.getWorkout_name().equals(name)) {
@@ -232,6 +215,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                         break;
                     }
                 }
+
                 // Open the connection as usual.
                 connection = (HttpURLConnection) params[0].openConnection();
                 // Configure the connection for a POST, including outputing streamed JSON data.
@@ -243,6 +227,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                 out.writeBytes(jsonWorkout.toString());
                 out.flush();
                 out.close();
+
                 // Handle the response from the (Lab09) server as usual.
                 if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     BufferedReader reader = new BufferedReader(
@@ -272,14 +257,22 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             return result;
         }
 
+        /*
+         * onPostExecute prompts for a Toast and then proceeds to create a new instance of
+         *      PostExerciseTask to share each exercise to the server.
+         *
+         * @param: JSONArray
+         * @return: none
+         */
         @Override
         protected void onPostExecute(JSONArray workout) {
+
+            // Create a Toast to provide information to the user
             Context context1 = getApplicationContext();
             Toast toast1 = Toast.makeText(context1, "Workout Shared", Toast.LENGTH_LONG);
             toast1.show();
 
-            System.out.println(workout);
-
+            // Get the workout ID that was returned from the server in order to use for sharing the workout's exercises
             try {
                 JSONObject temp = workout.getJSONObject(0);
                 Constants.WORKOUT_ID = temp.getInt("id");
@@ -287,6 +280,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            // Iterate through the workouts exercise list, sharing each one to the database server
             for (Workout workout1: prevWorkouts) {
                 if (workout1.getWorkout_name().equals(name)) {
                     for (Exercise exercise: workout1.getExercise_list()) {
@@ -300,10 +294,10 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
     }
 
     /*
-     * Formats a URL for the webservice specified in the string resources.
+     * Formats a URL for the webservice cs262.cs.calvin.edu:8081/fitness/sharedworkouts/exercise
      *
-     * @param none
-     * @return URL formatted for the course fitness server
+     * @param: none
+     * @return: URL formatted for the course fitness server
      */
     private URL createURLexercise() {
         try {
@@ -318,25 +312,33 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
 
     /*
      * Inner class for POSTing a new, hard-coded workout to the course server asynchronously
-     * This is for testing purposes only.
+     *
+     * @param: URL, JSONArray
      */
     private class PostExerciseTask extends AsyncTask<URL, Void, JSONArray> {
 
+        /*
+         * doInBackground is the tasks performed when an instance of PostExerciseTask is created
+         *
+         * @param: URL
+         * @return: JSONArray
+         */
         @Override
         protected JSONArray doInBackground(URL... params) {
+
             HttpURLConnection connection = null;
             StringBuilder jsonText = new StringBuilder();
             JSONArray result = null;
+
             try {
-                // Hard-code a new player using JSON.
+                // Hard-code a new exercise using JSON.
                 JSONObject jsonExercise = new JSONObject();
                 jsonExercise.put("name", Constants.CURRENT_EXERCISE.getName());
                 jsonExercise.put("reps", Constants.CURRENT_EXERCISE.getReps());
                 jsonExercise.put("sets", Constants.CURRENT_EXERCISE.getSets());
                 jsonExercise.put("weights", Constants.CURRENT_EXERCISE.getWeights());
-                System.out.println(Constants.WORKOUT_ID);
                 jsonExercise.put("workout_ID", Constants.WORKOUT_ID);
-                System.out.println(jsonExercise);
+
                 // Open the connection as usual.
                 connection = (HttpURLConnection) params[0].openConnection();
                 // Configure the connection for a POST, including outputing streamed JSON data.
@@ -348,6 +350,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
                 out.writeBytes(jsonExercise.toString());
                 out.flush();
                 out.close();
+
                 // Handle the response from the (Lab09) server as usual.
                 if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     BufferedReader reader = new BufferedReader(
@@ -377,11 +380,49 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             return result;
         }
 
+        /*
+         * onPostExecute simply outputs the exercise JSONArray that was returned from the server
+         *
+         * @param: JSONArray
+         * @return: none
+         */
         @Override
         protected void onPostExecute(JSONArray exercise) {
             System.out.println(exercise);
         }
 
+    }
+
+    /*
+    * onCreateOptionsMenu creates the menu at the top of the page layout
+    *
+    * @param: menu
+    * @return: true
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_page_about, menu);
+        return true;
+    }
+
+    /*
+     * onOptionsItemSelected performs an action if an menu item is selected
+     *
+     * @param: item
+     * @return: true -> if About item is clicked
+     *          super.onCreateItemsSelected(item) -> otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home_page_about:
+                startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
+                return true;
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), HelpFindingWorkouts.class));
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
