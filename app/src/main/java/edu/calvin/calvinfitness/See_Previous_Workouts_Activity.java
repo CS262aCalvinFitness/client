@@ -284,8 +284,7 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             for (Workout workout1: prevWorkouts) {
                 if (workout1.getWorkout_name().equals(name)) {
                     for (Exercise exercise: workout1.getExercise_list()) {
-                        Constants.CURRENT_EXERCISE = exercise;
-                        new PostExerciseTask().execute(createURLexercise());
+                        new PostExerciseTask(exercise).execute(createURLexercise());
                     }
                 }
             }
@@ -317,6 +316,13 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
      */
     private class PostExerciseTask extends AsyncTask<URL, Void, JSONArray> {
 
+        final Exercise exercise_temp;
+
+        public PostExerciseTask(Exercise exercise) {
+            super();
+            exercise_temp = exercise;
+        }
+
         /*
          * doInBackground is the tasks performed when an instance of PostExerciseTask is created
          *
@@ -333,10 +339,10 @@ public class See_Previous_Workouts_Activity extends AppCompatActivity {
             try {
                 // Hard-code a new exercise using JSON.
                 JSONObject jsonExercise = new JSONObject();
-                jsonExercise.put("name", Constants.CURRENT_EXERCISE.getName());
-                jsonExercise.put("reps", Constants.CURRENT_EXERCISE.getReps());
-                jsonExercise.put("sets", Constants.CURRENT_EXERCISE.getSets());
-                jsonExercise.put("weights", Constants.CURRENT_EXERCISE.getWeights());
+                jsonExercise.put("name", exercise_temp.getName());
+                jsonExercise.put("reps", exercise_temp.getReps());
+                jsonExercise.put("sets", exercise_temp.getSets());
+                jsonExercise.put("weights", exercise_temp.getWeights());
                 jsonExercise.put("workout_ID", Constants.WORKOUT_ID);
 
                 // Open the connection as usual.
