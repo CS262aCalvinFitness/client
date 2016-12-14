@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -254,6 +255,7 @@ public class LoginActivity extends AppCompatActivity  {
                 }
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mUsername)) {
+                    Constants.USERNAME = mUsername;
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
@@ -389,7 +391,8 @@ public class LoginActivity extends AppCompatActivity  {
 
         try {
             for (int i = 0; i < user_obj.length(); i++) {
-                String name = user_obj.getString(i);
+                JSONObject user = user_obj.getJSONObject(i);
+                String name = user.getString("Username");
                 name = name + ":password";
                 CREDENTIALS[index] = name;
                 index++;
@@ -400,10 +403,17 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
+    /*
+     * getUserId checks the JSONArray users from the database GET call to get the current user's ID
+     *
+     * @param: String username
+     * @return: Integer
+     */
     private Integer getUserId(String username) {
         for(Integer i = 0; i < users.length(); i++) {
             try {
-                if (users.getString(i).equals(username)) {
+                JSONObject object = users.getJSONObject(i);
+                if (object.getString("Username").equals(username)) {
                     return i + 1;
                 }
             } catch (Exception e) {

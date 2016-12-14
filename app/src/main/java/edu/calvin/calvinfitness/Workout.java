@@ -5,8 +5,6 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONArray;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +25,7 @@ public class Workout {
     private Boolean completed;
     private Integer userID;
 
-    /**
+    /*
      * Constructor that takes List of exercises, name, and date
      * This constructor is to be used by GSON when reading in files from the server
      * @param: exercises
@@ -168,9 +166,7 @@ public class Workout {
      */
     public void saveWorkout(Context context, String file_name) {
         //create check for the exact same workout
-        System.out.println("Made it here");
         List<Workout> prevWorkouts = new Workout_Reader().read(context, file_name);
-        System.out.println("Passed the test");
         String dataString = "[";
         try {
             FileOutputStream writer = context.openFileOutput(file_name, Context.MODE_PRIVATE);

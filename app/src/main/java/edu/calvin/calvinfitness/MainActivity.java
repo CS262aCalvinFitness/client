@@ -1,14 +1,25 @@
 package edu.calvin.calvinfitness;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /*
- * This is the entry point of the app. It enters into the Main Activity, giving three options for
+ * This is the entry point of the app after the user login. It enters into the Main Activity, giving three options for
  *      where to go, as well as a welcome label.
  *
  * @param: none
@@ -27,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new GetUsersTask().execute(createURLusers());
+
         /*
         // This code allows us to remove the workouts stored on the local emulator
         try {
@@ -36,6 +49,97 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(e.toString());
         }
         */
+    }
+
+    /*
+     * Formats a URL for the webservice specified in the string resources.
+     *
+     * @param none
+     * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/users/
+     *
+     * Altered from Lab06
+     */
+    private URL createURLusers() {
+        try {
+            String urlString;
+
+            urlString = "http://cs262.cs.calvin.edu:8081/fitness/users";
+
+            return new URL(urlString);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to make URL", Toast.LENGTH_SHORT).show();
+        }
+
+        return null;
+    }
+
+    /*
+     * GetUsersTask class established connection with the web server,
+     *      and gets the JSON information from the server.
+     */
+    private class GetUsersTask extends AsyncTask<URL, Void, JSONArray> {
+
+        /*
+         * doInBackground() connects to the appropriate server when an instance of GetUsersTask
+         *      is created (is done in the background obviously)
+         *
+         * @param: URL... params
+         * @return JSONArray
+         */
+        @Override
+        protected JSONArray doInBackground(URL... params) {
+            HttpURLConnection connection = null;
+            StringBuilder result = new StringBuilder();
+            try {
+                connection = (HttpURLConnection) params[0].openConnection();
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+                    return new JSONArray(result.toString());
+                } else {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                assert connection != null;
+                connection.disconnect();
+            }
+            return null;
+        }
+
+        /*
+        * onPostExecute() calls the necessary methods if a user was returned from
+        *      the doInBackground() method above
+        *
+        * @param: JSONArray user
+        * @return: none
+        */
+        @Override
+        protected void onPostExecute(JSONArray user) {
+            if (user != null) {
+
+                for (Integer i = 0; i < user.length(); i++) {
+                    try {
+                        JSONObject User = user.getJSONObject(i);
+                        String username = User.getString("Username");
+                        if (username.equals(Constants.USERNAME)) {
+                            Constants.USER_ID_DATABASE = User.getInt("ID");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            } else {
+                Toast.makeText(MainActivity.this, "Failed to connect to service", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /*

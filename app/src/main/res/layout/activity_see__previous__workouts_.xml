@@ -68,10 +68,11 @@
             android:smoothScrollbar="true" />
 
         <Button
-            android:text="@string/find_shared_workouts"
+            android:text="@string/share_workout_button_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/share_workout_button" />
+            android:id="@+id/share_workout_button"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

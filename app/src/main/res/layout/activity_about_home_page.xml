@@ -8,7 +8,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:text="@string/Calvin_Fitness_About"
+        android:paddingTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="30sp"
-        android:textAlignment="center"
-        android:paddingTop="20dp" />
+        android:paddingLeft="10dp" />
 </LinearLayout>

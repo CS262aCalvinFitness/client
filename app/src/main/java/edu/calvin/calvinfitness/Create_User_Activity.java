@@ -19,6 +19,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/*
+ * This activity allows the user to create a new User for our application
+ *
+ * @param: none
+ * @return: none
+ */
 public class Create_User_Activity extends AppCompatActivity {
 
     private EditText user_id;
@@ -29,21 +35,30 @@ public class Create_User_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__user_);
 
+        // Get access to the necessary widgets from the layout
         user_id = (EditText) findViewById(R.id.User_ID);
         Button create_user = (Button) findViewById(R.id.button);
         final EditText enter_password = (EditText) findViewById(R.id.password);
         final EditText confirm_password = (EditText) findViewById(R.id.confirmPassword);
 
+        // Set the onClickListener for the create_user button
         create_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // If the two passwords that the user entered are the same...
+                //      Then make call to server to add username to database server
                 if (enter_password.getText().toString().equals(confirm_password.getText().toString())) {
                     new_username = user_id.getText().toString();
                     System.out.println(new_username);
+                    Constants.USERNAME = new_username;
                     new PostUserTask().execute(createURLaddUser());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                } else {
+                }
+
+                // Else the two passwords are not the same, so tell that to the user
+                else {
                     Context context1 = getApplicationContext();
                     Toast toast1 = Toast.makeText(context1, "Passwords are not the same", Toast.LENGTH_LONG);
                     toast1.show();
@@ -53,7 +68,7 @@ public class Create_User_Activity extends AppCompatActivity {
     }
 
     /*
-     * Formats a URL for the webservice specified in the string resources.
+     * Formats a URL for the webservice cs262.cs.calvin.edu:8081/fitness/users
      *
      * @param none
      * @return URL formatted for the application calvinfitness server
@@ -78,17 +93,24 @@ public class Create_User_Activity extends AppCompatActivity {
      */
     private class PostUserTask extends AsyncTask<URL, Void, JSONArray> {
 
+        /*
+         * doInBackground is the tasks performed when an instance of PostUserTask is created
+         *
+         * @param: URL
+         * @return: JSONArray
+         */
         @Override
         protected JSONArray doInBackground(URL... params) {
+
             HttpURLConnection connection = null;
             StringBuilder jsonText = new StringBuilder();
             JSONArray result = null;
+
             try {
-                // Hard-code a new player using JSON.
+                // Hard-code a new user using JSON.
                 JSONObject jsonData = new JSONObject();
-                System.out.println(new_username);
                 jsonData.put("Username", new_username);
-                System.out.println(jsonData);
+
                 // Open the connection as usual.
                 connection = (HttpURLConnection) params[0].openConnection();
                 // Configure the connection for a POST, including outputing streamed JSON data.
@@ -100,6 +122,7 @@ public class Create_User_Activity extends AppCompatActivity {
                 out.writeBytes(jsonData.toString());
                 out.flush();
                 out.close();
+
                 if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     BufferedReader reader = new BufferedReader(
                             new InputStreamReader(connection.getInputStream()));
@@ -127,6 +150,13 @@ public class Create_User_Activity extends AppCompatActivity {
             }
                 return result;
         }
+
+        /*
+         * onPostExecute simply Toasts to the user that a new User has been created
+         *
+         * @param: JSONArray
+         * @return: none
+         */
         @Override
         protected void onPostExecute(JSONArray user) {
             Context context1 = getApplicationContext();

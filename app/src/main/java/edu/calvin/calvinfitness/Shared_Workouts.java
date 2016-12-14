@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -44,7 +45,6 @@ public class Shared_Workouts extends AppCompatActivity {
     private Spinner workout_spinner;
     private Context context = this;
     private ListView itemsListView;
-    private TextView workout_name_TextView;
 
     /*
      * onCreate() overrides the default onCreate() and sets the layout to be
@@ -58,20 +58,21 @@ public class Shared_Workouts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared__workouts);
 
+        // Call out the database server to get the list of Users and the workouts they have shared
         new GetUsersTask().execute(createURLusers());
         new GetSharedWorkoutsTask().execute(createURLworkouts());
 
+        // Get access to all the necessary widgets from the layout
         itemsListView = (ListView) findViewById(R.id.shared_workout_exercise);
-        workout_name_TextView = (TextView) findViewById(R.id.SharedWorkoutName);
         workout_spinner = (Spinner) findViewById(R.id.workout_spinner);
         users_spinner = (Spinner) findViewById(R.id.spinner);
 
+        // Set a listener for the users_spinner, which changes what is in the workouts spinner based on the selection
         users_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 updateDisplayWorkoutList();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -142,7 +143,6 @@ public class Shared_Workouts extends AppCompatActivity {
     */
     private void updateDisplay(Workout temp) {
         ArrayList<HashMap<String, String>> data = new ArrayList<>();
-        workout_name_TextView.setText(temp.getWorkout_name());
 
         exerciseList = temp.getExercise_list();
         for (Exercise item : exerciseList) {
@@ -163,10 +163,10 @@ public class Shared_Workouts extends AppCompatActivity {
     }
 
     /*
-    * Formats a URL for the webservice specified in the string resources.
+    * Formats a URL for the webservice cs262.cs.calvin.edu:8081/fitness/sharedworkouts
     *
     * @param none
-    * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/sharedworkouts/
+    * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/sharedworkouts
     *
     * Altered from Lab06
     */
@@ -248,10 +248,10 @@ public class Shared_Workouts extends AppCompatActivity {
     }
 
     /*
-     * Formats a URL for the webservice specified in the string resources.
+     * Formats a URL for the webservice cs262.cs.calvin.edu:8081/fitness/users
      *
      * @param none
-     * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/users/
+     * @return URL formatted for http://cs262.cs.calvin.edu:8081/fitness/users
      *
      * Altered from Lab06
      */
@@ -344,7 +344,8 @@ public class Shared_Workouts extends AppCompatActivity {
 
         try {
             for (int i = 0; i < user_obj.length(); i++) {
-                String name = user_obj.getString(i);
+                JSONObject user = user_obj.getJSONObject(i);
+                String name = user.getString("Username");
                 userList.add(name);
                 System.out.println(name);
             }
@@ -384,6 +385,14 @@ public class Shared_Workouts extends AppCompatActivity {
         users_spinner.setSelection(0);
     }
 
+    /*
+     * updateDisplayWorkoutList is called whenever the user changes the selection in the User Dropdown Menu
+     *      This function allows the user to only see the shared workouts from the user currently selected
+     *      in the Users dropdown menu, not all the shared workouts.
+     *
+     * @param: none
+     * @return: none
+     */
     private void updateDisplayWorkoutList() {
         Spinner workout_spinner = (Spinner) findViewById(R.id.workout_spinner);
 
@@ -408,5 +417,37 @@ public class Shared_Workouts extends AppCompatActivity {
         workout_spinner.setSelection(0);
 
 
+    }
+
+    /*
+    * onCreateOptionsMenu creates the menu at the top of the page layout
+    *
+    * @param: menu
+    * @return: true
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_page_about, menu);
+        return true;
+    }
+
+    /*
+     * onOptionsItemSelected performs an action if an menu item is selected
+     *
+     * @param: item
+     * @return: true -> if About item is clicked
+     *          super.onCreateItemsSelected(item) -> otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home_page_about:
+                startActivity(new Intent(getApplicationContext(), HomePageAboutActivity.class));
+                return true;
+            case R.id.help_page_about:
+                startActivity(new Intent(getApplicationContext(), ViewSharedWorkoutsActivity.class));
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

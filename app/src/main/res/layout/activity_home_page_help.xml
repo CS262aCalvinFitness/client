@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Home_Page_Help_TextView"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:paddingTop="20dp" />
+        android:paddingTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="26sp"
+        android:paddingLeft="5dp" />
 </LinearLayout>
