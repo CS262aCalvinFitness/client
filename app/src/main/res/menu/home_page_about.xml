@@ -4,6 +4,4 @@
         android:title="@string/about_title" />
     <item android:id="@+id/help_page_about"
         android:title="@string/help_title" />
-    <item android:id="@+id/activity_help_finding_workouts"
-        android:title="@string/help_finding_workouts_title" />
 </menu>
