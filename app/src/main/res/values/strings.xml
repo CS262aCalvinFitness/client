@@ -11,7 +11,8 @@
         and Mitch Stark for their CS262 Project at Calvin College, fall of 2016.</string>
 
     <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
-        workouts an ease! Select one of the four buttons on the home page to get started!</string>
+        workouts an ease! To get started, select either the "Create New Workout" page or the "Find Shared Workouts" page. Once you
+        have created your own workout or downloaded a shared workout, you can complete and view your workouts with "Start Workout" and "View Previous Workout." </string>
 
     <string name="help_finding_workouts">The detailed steps of how to find previously completed workouts are as follows:\n\n1. Find the down arrow in the top right corner, and click it.\n\n2. Then, select the name of the workout that you would like to view.\n\n3. Finally, click the \"View Past Workout\" button.\n</string>
 
