@@ -16,7 +16,7 @@ public class ViewSharedWorkoutsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_find_shared_workouts);
-        setTitle("Help: Finding Workouts");
+        setTitle("Help: Finding Shared Workouts");
     }
 
     /* Remove the triple-dot icon from the top of the application */

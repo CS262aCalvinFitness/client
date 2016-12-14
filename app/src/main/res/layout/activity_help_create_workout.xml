@@ -8,61 +8,88 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/introhelpcreate"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext1"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext2"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext3"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext4"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext5"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext6"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext7"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:text="@string/create_new_help_8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/helptext8"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp" />
 </LinearLayout>
