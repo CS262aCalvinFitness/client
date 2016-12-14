@@ -12,7 +12,11 @@
 
     <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
         workouts an ease! Select one of the four buttons on the home page to get started!</string>
-    <string name="help_finding_workouts">You can use the \"View Past Workouts\" feature of Calvin Fitness to view your completed workouts.\n\n1. Find the down arrow in the top right corner, and click it. Then, select the name of the workout that you would like to view.\n\n2. Click the \"View Past Workout\" button.\n\n3. View your results.\n\n4. If you want other users of the app to see this workout, press the Share Workout Button at the bottom of the screen.</string>
+
+    <string name="help_finding_workouts">The detailed steps of how to find previously completed workouts are as follows:
+Find the down arrow in the top right corner, and click it. Then, select the name of the workout that you would like to view.
+Finally, click the "View Past Workout" button.
+</string>
 
     <string name="about_title">About</string>
     <string name="help_finding_workouts_title">Help: Find Past Workouts</string>
