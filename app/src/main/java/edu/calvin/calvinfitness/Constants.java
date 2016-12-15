@@ -17,5 +17,4 @@ public class Constants {
     static String USERNAME;
     static Integer USER_ID_DATABASE;
     static Integer WORKOUT_ID;
-    static Exercise CURRENT_EXERCISE;
 }

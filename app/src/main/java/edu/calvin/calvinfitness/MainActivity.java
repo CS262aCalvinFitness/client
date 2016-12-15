@@ -1,5 +1,6 @@
 package edu.calvin.calvinfitness;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -43,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
         /*
         // This code allows us to remove the workouts stored on the local emulator
         try {
-            FileOutputStream writer = openFileOutput(Constants.COMPLETED_FILE, Context.MODE_PRIVATE);
+            FileOutputStream writer = openFileOutput(Constants.STANDARD_FILE, Context.MODE_PRIVATE);
             writer.write("".getBytes());
         } catch (Exception e) {
             System.out.println(e.toString());
         }
         */
+
     }
 
     /*

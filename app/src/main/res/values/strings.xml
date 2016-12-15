@@ -10,9 +10,7 @@
     <string name="Calvin_Fitness_About">CalvinFitness was created by Ethan Clark, Russell Clousing, Mark Davis, Matt Kotva,
         and Mitch Stark for their CS262 Project at Calvin College, fall of 2016.</string>
 
-    <string name="Calvin_Fitness_Help">Welcome to Calvin Fitness, an application which makes tracking
-        workouts an ease! To get started, select either the "Create New Workout" page or the "Find Shared Workouts" page. Once you
-        have created your own workout or downloaded a shared workout, you can complete and view your workouts with "Start Workout" and "View Previous Workout." </string>
+    <string name="Calvin_Fitness_Help">"Welcome to Calvin Fitness, an application which makes tracking workouts an ease!\n        \nTo get started, select either the \"Create New Workout\" page or the \"Find Shared Workouts\" page.\n        \nOnce you have created your own workout or downloaded a shared workout, you can complete and view your workouts with \"Start Workout\" and \"View Previous Workout.\" "</string>
 
     <string name="help_finding_workouts">The detailed steps of how to find previously completed workouts are as follows:\n\n1. Find the down arrow in the top right corner, and click it.\n\n2. Then, select the name of the workout that you would like to view.\n\n3. Finally, click the \"View Past Workout\" button.\n</string>
 
@@ -30,7 +28,7 @@
     <string name="create_new_help_4">4.	Select how many reps</string>
     <string name="create_new_help_5">5.	Enter the weight in pounds</string>
     <string name="create_new_help_6">6.	Hit the button labeled add to workout</string>
-    <string name="create_new_help_7">7.	Continue adding exercises until satisfied (steps 3 through 6)</string>
+    <string name="create_new_help_7">7.\tContinue adding exercises until satisfied (steps 2 through 6)</string>
     <string name="create_new_help_8">8.	Hit the button labeled save workout to save the workout</string>
 
     <string name="start_workout_intro">Here are some instructions for starting a workout</string>
